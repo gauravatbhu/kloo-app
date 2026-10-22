@@ -35,6 +35,9 @@ def main(argv=None):
     ap.add_argument("--limit", type=int, default=0,
                     help="max clips per source, in manifest order (0 = all); a seeded spread")
     ap.add_argument("--greedy", action="store_true", help="disable temperature fallback")
+    ap.add_argument("--max-minutes", type=float, default=0,
+                    help="stop transcribing after this long (0 = no limit); clips run in a seeded "
+                         "interleaved order, so a partial run still covers every source")
     ap.add_argument("--batch", type=int, default=8)
     a = ap.parse_args(argv)
 
@@ -105,12 +108,25 @@ def main(argv=None):
             out[k] = (out[k] + " " + t.strip()).strip()
         return out, sum(len(p) for p in pieces) / 16000
 
+    deadline = time.time() + a.max_minutes * 60 if a.max_minutes else None
+    budget_share = {lang: sum(1 for c in clips if c["lang"] == lang) for lang in langs}
+    total = sum(budget_share.values()) or 1
     timing = {}
     for lang in langs:
-        todo = [c for c in clips if c["lang"] == lang]
+        # ids are hashes, so sorting by id interleaves sources and conditions
+        todo = sorted((c for c in clips if c["lang"] == lang), key=lambda c: c["id"])
+        lang_deadline = None
+        if deadline:
+            lang_deadline = time.time() + (deadline - time.time()) * budget_share[lang] / total
+            total -= budget_share[lang]
         audio_s = compute_s = 0.0
+        done = 0
         for i in range(0, len(todo), a.batch):
+            if lang_deadline and time.time() > lang_deadline:
+                print(f"{lang}: time budget reached after {done}/{len(todo)} clips", flush=True)
+                break
             batch = todo[i:i + a.batch]
+            done += len(batch)
             t0 = time.time()
             out, secs = run(batch, {"hi": "hindi", "en": "english"}[lang])
             compute_s += time.time() - t0
@@ -120,7 +136,7 @@ def main(argv=None):
                     f.write(o + "\n")
             print(f"{a.model} {lang}: {min(i + a.batch, len(todo))}/{len(todo)} "
                   f"RTF {compute_s / max(audio_s, 1e-9):.3f}", flush=True)
-        timing[lang] = {"clips": len(todo), "audio_s": round(audio_s, 1),
+        timing[lang] = {"clips": done, "planned": len(todo), "audio_s": round(audio_s, 1),
                         "compute_s": round(compute_s, 1),
                         "rtf": round(compute_s / audio_s, 3) if audio_s else None}
     with open(os.path.join(a.hyps, "_timing.json"), "w") as f:
