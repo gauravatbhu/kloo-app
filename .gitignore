@@ -6,3 +6,4 @@ models/**/*.litertlm
 .DS_Store
 *.keystore
 .env*
+.claude/worktrees/
