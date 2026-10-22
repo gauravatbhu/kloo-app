@@ -14,12 +14,17 @@ deliberately tiny backend. Target running cost: about $15–25 a month at launch
 ## On-device AI
 | Job | Engine | Notes |
 |---|---|---|
-| Speech to text | whisper.cpp (Android), WhisperKit (iOS) | MIT. Start with multilingual Whisper "small"; evaluate larger for Hindi |
+| Speech to text | whisper.cpp (Android), WhisperKit (iOS); Hindi model chosen in round 1 | MIT. Whisper small for English plus a Hindi model, routed by language (docs/research/speech-model-options.md) |
 | On-screen text | Apple Vision; Google ML Kit text recognition | Offline |
 | Embeddings | EmbeddingGemma 308M, 256-dim (Matryoshka) | <200 MB RAM quantised, 100+ languages |
 | Answers, tier 1 | Apple Foundation Models; Gemini Nano (ML Kit Prompt API, alpha) | Recent flagships only; Apple has no Hindi yet |
-| Answers, tier 2 | Gemma 3 1B via LiteRT-LM (~1 GB optional download) | LiteRT-LM Swift is early preview; llama.cpp fallback on iOS |
+| Answers, tier 2 | Gemma 3 1B via LiteRT-LM (bundled, ~0.6 GB) | LiteRT-LM Swift is early preview; llama.cpp fallback on iOS |
 | Answers, tier 3 | Result cards only | Older phones |
+
+## Model packaging
+All models ship inside the app (docs/decisions/0003): Play Asset Delivery
+install-time asset packs on Android, the app bundle on iOS. No model download
+server. Install size ~1.2–1.5 GB; budget 2 GB.
 
 ## Video pipeline (on device)
 1. Receive file (share or "you just downloaded a reel" via limited photo access).

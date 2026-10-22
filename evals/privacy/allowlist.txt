@@ -6,5 +6,4 @@ www.tiktok.com             link previews (oEmbed), user can turn off
 www.googleapis.com         YouTube sync with the user's Google sign-in
 *.googlesyndication.com    AdMob non-personalised ads (free tier)
 *.doubleclick.net          AdMob ad serving
-models.kloo.example        optional model downloads (replace with real host)
 *.ingest.sentry.io         opt-in crash reports, scrubbed
