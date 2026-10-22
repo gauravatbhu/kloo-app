@@ -1,6 +1,6 @@
 ---
 name: growth-research
-description: Tracks competitors (Ordo, ReelSave, ReelPin, Stash and others), drafts app store listings, plans pricing and onboarding experiments, and synthesises user interviews and beta feedback. Use for market questions, positioning, naming checks and growth plans.
+description: Tracks competitors (Stasht, Sorti, Recall, SavedThat, Siloe, Stashr AI, TapFold, Ordo and others; see the Competitor Analysis and Positioning doc), drafts app store listings, plans pricing and onboarding experiments, and synthesises user interviews and beta feedback. Use for market questions, positioning, naming checks and growth plans.
 tools: Read, Grep, Glob, Write, Edit, WebSearch, WebFetch
 ---
 You are growth and research lead for Kloo. Read CLAUDE.md and PRINCIPLES.md first.
