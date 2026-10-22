@@ -1,0 +1,69 @@
+# Devanagari spelling<TAB>Latin spelling, used by hinglish_normalise before the
+# rule-based romaniser. Purpose: English words and proper nouns that engines
+# write in Devanagari ("कैफे") must still match references that write them in
+# Latin ("cafe"). Hindi words do NOT belong here; the romaniser handles them.
+# Nukta is folded before lookup, so list one spelling without nukta.
+# Add a line whenever error analysis finds a loanword mismatch. Keep it sorted
+# by topic. Changing this file changes scores: note it in the eval report.
+#
+# general reel words
+वीडियो	video
+रील	reel
+रील्स	reels
+लाइक	like
+शेयर	share
+सब्सक्राइब	subscribe
+फॉलो	follow
+कमेंट	comment
+लिंक	link
+बायो	bio
+ओके	okay
+गाइज	guys
+एक्चुअली	actually
+बेसिकली	basically
+सिंपल	simple
+बेस्ट	best
+टिप	tip
+टिप्स	tips
+स्टेप	step
+टाइम	time
+मिनट	minute
+मिनट्स	minutes
+# food
+रेसिपी	recipe
+कैफे	cafe
+सॉस	sauce
+बटर	butter
+चीज	cheese
+ऑयल	oil
+हेल्दी	healthy
+# travel
+ट्रैवल	travel
+ट्रिप	trip
+होटल	hotel
+फ्लाइट	flight
+टिकट	ticket
+बजट	budget
+दिल्ली	delhi
+मुंबई	mumbai
+बेंगलुरु	bengaluru
+# fitness
+जिम	gym
+वर्कआउट	workout
+प्रोटीन	protein
+डाइट	diet
+वेट	weight
+# money
+सेविंग	saving
+सेविंग्स	savings
+इन्वेस्ट	invest
+म्यूचुअल	mutual
+फंड	fund
+बैंक	bank
+अकाउंट	account
+क्रेडिट	credit
+कार्ड	card
+# how-to
+फोन	phone
+ऐप	app
+सेटिंग्स	settings

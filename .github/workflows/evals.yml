@@ -16,6 +16,8 @@ jobs:
           python-version: "3.12"
       # Replace the sample files below with real harness output once the apps exist:
       # the Android/iOS UI test jobs upload results.jsonl and capture.jsonl as artifacts.
+      - name: Speech runner and normaliser tests
+        run: python3 -m unittest discover -s evals/speech -v
       - name: Privacy promise
         run: python3 evals/privacy/check_egress.py evals/privacy/sample_capture.jsonl
       - name: Quality suites

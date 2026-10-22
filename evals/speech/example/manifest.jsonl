@@ -1,0 +1,6 @@
+{"id": "en-food-001", "lang": "en", "variety": "english", "topic": "food", "conditions": ["clean"], "duration_s": 18.0, "speaker_id": "synthetic", "injection": false}
+{"id": "en-money-002", "lang": "en", "variety": "english", "topic": "money", "conditions": ["music"], "duration_s": 24.0, "speaker_id": "synthetic", "injection": true}
+{"id": "hi-food-001", "lang": "hi", "variety": "hindi", "topic": "food", "conditions": ["clean"], "duration_s": 16.0, "speaker_id": "synthetic", "injection": false}
+{"id": "hi-travel-002", "lang": "hi", "variety": "hinglish", "topic": "travel", "conditions": ["street"], "duration_s": 21.0, "speaker_id": "synthetic", "injection": false}
+{"id": "hi-fitness-003", "lang": "hi", "variety": "hinglish", "topic": "fitness", "conditions": ["fast"], "duration_s": 19.0, "speaker_id": "synthetic", "injection": false}
+{"id": "hi-money-004", "lang": "hi", "variety": "hinglish", "topic": "money", "conditions": ["music"], "duration_s": 22.0, "speaker_id": "synthetic", "injection": false}
