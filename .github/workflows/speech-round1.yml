@@ -13,6 +13,7 @@ on:
     paths:
       - ".github/workflows/speech-round1.yml"
       - "evals/speech/round1/TRIGGER"
+      - "evals/speech/round1/ONLY"
 
 concurrency:
   group: speech-round1
@@ -97,11 +98,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Skip models not listed in evals/speech/round1/ONLY (if present)
+        id: pick
+        shell: bash
+        run: |
+          if [ -s evals/speech/round1/ONLY ] && ! grep -qx "${{ matrix.slug }}" evals/speech/round1/ONLY; then
+            echo "run=false" >> "$GITHUB_OUTPUT"; else echo "run=true" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/download-artifact@v4
+        if: steps.pick.outputs.run == 'true'
         with:
           name: golden
           path: .
       - name: Transcribe and score
+        if: steps.pick.outputs.run == 'true'
         shell: bash
         run: |
           set -o pipefail
@@ -119,7 +128,7 @@ jobs:
               --summary out/${{ matrix.slug }}/summary.json --missing empty
           } 2>&1 | tee logs/${{ matrix.slug }}.log
       - name: Push results and log to ci/speech-results
-        if: always()
+        if: always() && steps.pick.outputs.run == 'true'
         shell: bash
         run: |
           set -x

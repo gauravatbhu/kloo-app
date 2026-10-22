@@ -60,10 +60,19 @@ def main(argv=None):
         with torch.inference_mode():
             try:
                 return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
-            except ValueError:
-                model.generation_config.forced_decoder_ids = processor.get_decoder_prompt_ids(
-                    language=lang, task="transcribe")
-                return model.generate(features, max_new_tokens=440)
+            except ValueError as e:
+                if "generation config is outdated" not in str(e):
+                    raise
+                # Older fine-tunes: borrow the matching OpenAI generation config
+                # (fix from transformers issue #25084), then pin the language as usual.
+                from transformers import GenerationConfig
+                cfg = model.config
+                base = {384: "tiny", 512: "base", 768: "small", 1024: "medium"}.get(cfg.d_model)
+                if base is None:
+                    base = "large-v3" if cfg.num_mel_bins == 128 else "large-v2"
+                print(f"generation config outdated; using openai/whisper-{base}'s", file=sys.stderr)
+                model.generation_config = GenerationConfig.from_pretrained(f"openai/whisper-{base}")
+                return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
 
     def run(batch, lang):
         # Split anything longer than 30 s into consecutive 30 s windows (rare: pseudo-reels).
