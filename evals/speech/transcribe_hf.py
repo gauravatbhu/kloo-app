@@ -15,6 +15,7 @@ import os
 import sys
 import time
 import wave
+import zlib
 
 import numpy as np
 
@@ -66,31 +67,55 @@ def main(argv=None):
     os.makedirs(a.hyps, exist_ok=True)
     window = 30 * 16000
 
-    # Temperature fallback, as phone engines (whisper.cpp, WhisperKit) and openai-whisper
-    # decode: retry at higher temperature when output is repetitive or low-confidence.
-    fallback = dict(temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), compression_ratio_threshold=1.35,
-                    logprob_threshold=-1.0) if not a.greedy else {}
+    # Greedy decode, then retry only outputs that look like a repetition loop at
+    # rising temperature. This mirrors openai-whisper / whisper.cpp fallback
+    # (text compression ratio > 2.4), without paying for it on every clip.
+    temps = () if a.greedy else (0.2, 0.4, 0.6, 0.8, 1.0)
 
-    def generate(features, lang):
+    def looping(text):
+        b = text.encode("utf-8")
+        return len(b) > 40 and len(b) / max(len(zlib.compress(b)), 1) > 2.4
+
+    def fix_generation_config():
+        from transformers import GenerationConfig
+        cfg = model.config
+        base = {384: "tiny", 512: "base", 768: "small", 1024: "medium"}.get(cfg.d_model)
+        if base is None:
+            base = "large-v3" if cfg.num_mel_bins == 128 else "large-v2"
+        print(f"generation config outdated; using openai/whisper-{base}'s", file=sys.stderr)
+        model.generation_config = GenerationConfig.from_pretrained(f"openai/whisper-{base}")
+
+    def generate(features, lang, **kw):
         """Pin language + transcribe. Older fine-tunes need a borrowed generation config."""
         with torch.inference_mode():
             try:
                 return model.generate(features, language=lang, task="transcribe",
-                                      max_new_tokens=440, **fallback)
+                                      max_new_tokens=440, **kw)
             except ValueError as e:
                 if "generation config is outdated" not in str(e):
                     raise
-                # Older fine-tunes: borrow the matching OpenAI generation config
-                # (fix from transformers issue #25084), then pin the language as usual.
-                from transformers import GenerationConfig
-                cfg = model.config
-                base = {384: "tiny", 512: "base", 768: "small", 1024: "medium"}.get(cfg.d_model)
-                if base is None:
-                    base = "large-v3" if cfg.num_mel_bins == 128 else "large-v2"
-                print(f"generation config outdated; using openai/whisper-{base}'s", file=sys.stderr)
-                model.generation_config = GenerationConfig.from_pretrained(f"openai/whisper-{base}")
+                fix_generation_config()
                 return model.generate(features, language=lang, task="transcribe",
-                                      max_new_tokens=440, **fallback)
+                                      max_new_tokens=440, **kw)
+
+    retries = {"looped": 0, "fixed": 0}
+
+    def decode(features, lang):
+        texts = processor.batch_decode(generate(features, lang), skip_special_tokens=True)
+        for k, t in enumerate(texts):
+            if not temps or not looping(t):
+                continue
+            retries["looped"] += 1
+            for temp in temps:
+                torch.manual_seed(k)
+                t2 = processor.batch_decode(generate(features[k:k + 1], lang, do_sample=True,
+                                                     temperature=temp),
+                                            skip_special_tokens=True)[0]
+                if not looping(t2):
+                    texts[k] = t2
+                    retries["fixed"] += 1
+                    break
+        return texts
 
     def run(batch, lang):
         # Split anything longer than 30 s into consecutive 30 s windows (rare: pseudo-reels).
@@ -101,8 +126,7 @@ def main(argv=None):
                 pieces.append(audio[start:start + window])
                 owner.append(k)
         feats = processor.feature_extractor(pieces, sampling_rate=16000, return_tensors="pt").input_features
-        ids = generate(feats, lang)
-        texts = processor.batch_decode(ids, skip_special_tokens=True)
+        texts = decode(feats, lang)
         out = [""] * len(batch)
         for k, t in zip(owner, texts):
             out[k] = (out[k] + " " + t.strip()).strip()
@@ -140,7 +164,8 @@ def main(argv=None):
                         "compute_s": round(compute_s, 1),
                         "rtf": round(compute_s / audio_s, 3) if audio_s else None}
     with open(os.path.join(a.hyps, "_timing.json"), "w") as f:
-        json.dump({"model": a.model, "cpu_count": os.cpu_count(), "timing": timing}, f, indent=2)
+        json.dump({"model": a.model, "cpu_count": os.cpu_count(), "timing": timing,
+                   "loop_retries": retries, "decoding": "greedy" if a.greedy else "greedy+loop-fallback"}, f, indent=2)
     return 0
 
 
