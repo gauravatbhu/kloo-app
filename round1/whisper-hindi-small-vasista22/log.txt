@@ -4,31 +4,10 @@
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
 + python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model vasista22/whisper-hindi-small --langs hi
-/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py:509: FutureWarning: The input name `inputs` is deprecated. Please make sure to use `input_features` instead.
-  warnings.warn(
-language kwarg failed (The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Either set the language using the `forced_decoder_ids` in the model config, or update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224); retrying with forced_decoder_ids
 Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 62, in run
-    return asr(audios, batch_size=len(audios), chunk_length_s=30,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 283, in __call__
-    return super().__call__(inputs, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/base.py", line 1283, in __call__
-    outputs = list(final_iterator)
-              ^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
-    item = next(self.iterator)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
-    processed = self.infer(next(self.iterator), **self.params)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/base.py", line 1209, in forward
-    model_outputs = self._forward(model_inputs, **forward_params)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 515, in _forward
-    tokens = self.model.generate(
-             ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 62, in generate
+    return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 536, in generate
     self._set_language_and_task(
   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 1253, in _set_language_and_task
@@ -38,39 +17,22 @@ ValueError: The generation config is outdated and is thus not compatible with th
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 95, in <module>
+  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 108, in <module>
     sys.exit(main())
              ^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 78, in main
+  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 91, in main
     out, secs = run(batch, {"hi": "hindi", "en": "english"}[lang])
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 68, in run
-    return asr(audios, batch_size=len(audios), chunk_length_s=30), \
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 283, in __call__
-    return super().__call__(inputs, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/base.py", line 1283, in __call__
-    outputs = list(final_iterator)
-              ^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
-    item = next(self.iterator)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
-    processed = self.infer(next(self.iterator), **self.params)
-                           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
-    data = self._next_data()
-           ^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
-    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 33, in fetch
-    data.append(next(self.dataset_iter))
-                ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
-    processed = next(self.subiterator)
-                ^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 373, in preprocess
-    raise ValueError(
-ValueError: When passing a dictionary to AutomaticSpeechRecognitionPipeline, the dict needs to contain a "raw" key containing the numpy array representing the audio and a "sampling_rate" key, containing the sampling_rate associated with that array
+  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 77, in run
+    ids = generate(feats, lang)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 66, in generate
+    return model.generate(features, max_new_tokens=440)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 650, in generate
+    decoder_input_ids, kwargs = self._prepare_decoder_input_ids(
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 1681, in _prepare_decoder_input_ids
+    prev_start_of_text = suppress_tokens[-2] if suppress_tokens is not None else None
+                         ~~~~~~~~~~~~~~~^^^^
+IndexError: index -2 is out of bounds for dimension 0 with size 0
