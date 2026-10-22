@@ -4,56 +4,95 @@
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
 + python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model openai/whisper-large-v3-turbo --langs hi,en
-/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py:509: FutureWarning: The input name `inputs` is deprecated. Please make sure to use `input_features` instead.
-  warnings.warn(
 You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
 The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
-language kwarg failed ('raw'); retrying with forced_decoder_ids
-Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 63, in run
-    generate_kwargs=kwargs), sum(len(x["raw"]) for x in audios) / 16000
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 63, in <genexpr>
-    generate_kwargs=kwargs), sum(len(x["raw"]) for x in audios) / 16000
-                                     ~^^^^^^^
-KeyError: 'raw'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 95, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 78, in main
-    out, secs = run(batch, {"hi": "hindi", "en": "english"}[lang])
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 68, in run
-    return asr(audios, batch_size=len(audios), chunk_length_s=30), \
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 283, in __call__
-    return super().__call__(inputs, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/base.py", line 1283, in __call__
-    outputs = list(final_iterator)
-              ^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 124, in __next__
-    item = next(self.iterator)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 269, in __next__
-    processed = self.infer(next(self.iterator), **self.params)
-                           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
-    data = self._next_data()
-           ^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/dataloader.py", line 757, in _next_data
-    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/torch/utils/data/_utils/fetch.py", line 33, in fetch
-    data.append(next(self.dataset_iter))
-                ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/pt_utils.py", line 186, in __next__
-    processed = next(self.subiterator)
-                ^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/pipelines/automatic_speech_recognition.py", line 373, in preprocess
-    raise ValueError(
-ValueError: When passing a dictionary to AutomaticSpeechRecognitionPipeline, the dict needs to contain a "raw" key containing the numpy array representing the audio and a "sampling_rate" key, containing the sampling_rate associated with that array
+openai/whisper-large-v3-turbo hi: 8/1086 RTF 1.160
+openai/whisper-large-v3-turbo hi: 16/1086 RTF 1.098
+openai/whisper-large-v3-turbo hi: 24/1086 RTF 0.995
+openai/whisper-large-v3-turbo hi: 32/1086 RTF 1.061
+openai/whisper-large-v3-turbo hi: 40/1086 RTF 1.085
+openai/whisper-large-v3-turbo hi: 48/1086 RTF 1.090
+openai/whisper-large-v3-turbo hi: 56/1086 RTF 1.082
+openai/whisper-large-v3-turbo hi: 64/1086 RTF 1.106
+openai/whisper-large-v3-turbo hi: 72/1086 RTF 1.091
+openai/whisper-large-v3-turbo hi: 80/1086 RTF 1.071
+openai/whisper-large-v3-turbo hi: 88/1086 RTF 1.043
+openai/whisper-large-v3-turbo hi: 96/1086 RTF 1.037
+openai/whisper-large-v3-turbo hi: 104/1086 RTF 1.010
+openai/whisper-large-v3-turbo hi: 112/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 120/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 128/1086 RTF 0.990
+openai/whisper-large-v3-turbo hi: 136/1086 RTF 0.970
+openai/whisper-large-v3-turbo hi: 144/1086 RTF 0.972
+openai/whisper-large-v3-turbo hi: 152/1086 RTF 0.973
+openai/whisper-large-v3-turbo hi: 160/1086 RTF 0.978
+openai/whisper-large-v3-turbo hi: 168/1086 RTF 0.976
+openai/whisper-large-v3-turbo hi: 176/1086 RTF 0.976
+openai/whisper-large-v3-turbo hi: 184/1086 RTF 0.978
+openai/whisper-large-v3-turbo hi: 192/1086 RTF 0.988
+openai/whisper-large-v3-turbo hi: 200/1086 RTF 0.996
+openai/whisper-large-v3-turbo hi: 208/1086 RTF 1.003
+openai/whisper-large-v3-turbo hi: 216/1086 RTF 0.997
+openai/whisper-large-v3-turbo hi: 224/1086 RTF 1.007
+openai/whisper-large-v3-turbo hi: 232/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 240/1086 RTF 0.999
+openai/whisper-large-v3-turbo hi: 248/1086 RTF 1.008
+openai/whisper-large-v3-turbo hi: 256/1086 RTF 1.011
+openai/whisper-large-v3-turbo hi: 264/1086 RTF 1.009
+openai/whisper-large-v3-turbo hi: 272/1086 RTF 1.013
+openai/whisper-large-v3-turbo hi: 280/1086 RTF 1.015
+openai/whisper-large-v3-turbo hi: 288/1086 RTF 1.014
+openai/whisper-large-v3-turbo hi: 296/1086 RTF 1.019
+openai/whisper-large-v3-turbo hi: 304/1086 RTF 1.014
+openai/whisper-large-v3-turbo hi: 312/1086 RTF 1.010
+openai/whisper-large-v3-turbo hi: 320/1086 RTF 1.007
+openai/whisper-large-v3-turbo hi: 328/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 336/1086 RTF 1.006
+openai/whisper-large-v3-turbo hi: 344/1086 RTF 1.002
+openai/whisper-large-v3-turbo hi: 352/1086 RTF 0.998
+openai/whisper-large-v3-turbo hi: 360/1086 RTF 0.994
+openai/whisper-large-v3-turbo hi: 368/1086 RTF 0.998
+openai/whisper-large-v3-turbo hi: 376/1086 RTF 0.996
+openai/whisper-large-v3-turbo hi: 384/1086 RTF 0.989
+openai/whisper-large-v3-turbo hi: 392/1086 RTF 0.999
+openai/whisper-large-v3-turbo hi: 400/1086 RTF 0.997
+openai/whisper-large-v3-turbo hi: 408/1086 RTF 1.002
+openai/whisper-large-v3-turbo hi: 416/1086 RTF 1.007
+openai/whisper-large-v3-turbo hi: 424/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 432/1086 RTF 1.006
+openai/whisper-large-v3-turbo hi: 440/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 448/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 456/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 464/1086 RTF 1.002
+openai/whisper-large-v3-turbo hi: 472/1086 RTF 0.993
+openai/whisper-large-v3-turbo hi: 480/1086 RTF 0.998
+openai/whisper-large-v3-turbo hi: 488/1086 RTF 1.001
+openai/whisper-large-v3-turbo hi: 496/1086 RTF 0.998
+openai/whisper-large-v3-turbo hi: 504/1086 RTF 0.996
+openai/whisper-large-v3-turbo hi: 512/1086 RTF 1.000
+openai/whisper-large-v3-turbo hi: 520/1086 RTF 1.001
+openai/whisper-large-v3-turbo hi: 528/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 536/1086 RTF 1.003
+openai/whisper-large-v3-turbo hi: 544/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 552/1086 RTF 1.005
+openai/whisper-large-v3-turbo hi: 560/1086 RTF 1.001
+openai/whisper-large-v3-turbo hi: 568/1086 RTF 1.003
+openai/whisper-large-v3-turbo hi: 576/1086 RTF 1.003
+openai/whisper-large-v3-turbo hi: 584/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 592/1086 RTF 1.001
+openai/whisper-large-v3-turbo hi: 600/1086 RTF 1.004
+openai/whisper-large-v3-turbo hi: 608/1086 RTF 1.005
+openai/whisper-large-v3-turbo hi: 616/1086 RTF 1.001
+openai/whisper-large-v3-turbo hi: 624/1086 RTF 1.002
+openai/whisper-large-v3-turbo hi: 632/1086 RTF 1.003
+openai/whisper-large-v3-turbo hi: 640/1086 RTF 1.009
+openai/whisper-large-v3-turbo hi: 648/1086 RTF 1.015
+openai/whisper-large-v3-turbo hi: 656/1086 RTF 1.022
+openai/whisper-large-v3-turbo hi: 664/1086 RTF 1.025
+openai/whisper-large-v3-turbo hi: 672/1086 RTF 1.022
+openai/whisper-large-v3-turbo hi: 680/1086 RTF 1.027
+openai/whisper-large-v3-turbo hi: 688/1086 RTF 1.036
+openai/whisper-large-v3-turbo hi: 696/1086 RTF 1.036
+openai/whisper-large-v3-turbo hi: 704/1086 RTF 1.035
+openai/whisper-large-v3-turbo hi: 712/1086 RTF 1.039
+openai/whisper-large-v3-turbo hi: 720/1086 RTF 1.044
