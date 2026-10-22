@@ -148,7 +148,7 @@ test_numbers_currency_percent (test_speech_eval.StrictNormaliseTest.test_numbers
 test_zero_width_chars_do_not_split_words (test_speech_eval.StrictNormaliseTest.test_zero_width_chars_do_not_split_words) ... ok
 
 ----------------------------------------------------------------------
-Ran 33 tests in 11.760s
+Ran 33 tests in 12.051s
 
 OK
 + mkdir -p dl
@@ -178,43 +178,43 @@ OK
 + head -40
 mucs
 mucs/test
-mucs/test/lHGLSlYIb1clRBRF.wav
-mucs/test/FV8hkymGWcy53lrf.wav
-mucs/test/Psh5UDSFbhWLZ3gk.wav
-mucs/test/fpL6MBSZsci9dyAn.wav
-mucs/test/kGQKLyQ1HtnUNL1d.wav
-mucs/test/kvxzesc5pGxL6dnk.wav
-mucs/test/HgEJsLGKNWSFl8T7.wav
-mucs/test/n3lwFhZkSdbJkOa0.wav
-mucs/test/dNHXkqqVPqWYhzis.wav
-mucs/test/nImMxiSAAmCMR3yi.wav
-mucs/test/aVTioioyNUVPGF4t.wav
-mucs/test/transcripts
-mucs/test/transcripts/spkr_list
-mucs/test/transcripts/text
-mucs/test/transcripts/wav.scp
-mucs/test/transcripts/utt2spk
-mucs/test/transcripts/spk2utt
-mucs/test/transcripts/segments
-mucs/test/406yMKxIdSDHRf8H.wav
-mucs/test/x8iijxWeCf26KNpC.wav
-mucs/test/NhV290ew2hDJfVqc.wav
-mucs/test/K8YJLqIcMPJ5GftE.wav
-mucs/test/ZQC2TFqLsvNDq9bP.wav
-mucs/test/Bmcrju1ByfdrXE9P.wav
-mucs/test/jFTbEEy3BCO5axj5.wav
-mucs/test/5baFeyjOxK8JQnNG.wav
-mucs/test/LPGZ2Jo8uBX4sx76.wav
-mucs/test/VU6OA7HUqTpQNtm2.wav
-mucs/test/w5Jyq3XMbb3WwiKQ.wav
-mucs/test/RRrEfkw4Rh5TdJkS.wav
-mucs/test/K5BlLYB9ynemLTVa.wav
 mucs/test/TkzR0GrQyK0vSTuj.wav
-mucs/test/4oLp3bc9OSJbDrwM.wav
-mucs/test/swLUjPHatcTk0wf8.wav
-mucs/test/nJfFvNUB8tQkaGgp.wav
+mucs/test/K5BlLYB9ynemLTVa.wav
+mucs/test/w5Jyq3XMbb3WwiKQ.wav
+mucs/test/n3lwFhZkSdbJkOa0.wav
 mucs/test/UO5ZLDtkc8QMi9Hk.wav
+mucs/test/K8YJLqIcMPJ5GftE.wav
+mucs/test/fpL6MBSZsci9dyAn.wav
+mucs/test/kvxzesc5pGxL6dnk.wav
+mucs/test/ZQC2TFqLsvNDq9bP.wav
+mucs/test/Psh5UDSFbhWLZ3gk.wav
+mucs/test/x8iijxWeCf26KNpC.wav
+mucs/test/LPGZ2Jo8uBX4sx76.wav
+mucs/test/RRrEfkw4Rh5TdJkS.wav
+mucs/test/4oLp3bc9OSJbDrwM.wav
+mucs/test/nJfFvNUB8tQkaGgp.wav
+mucs/test/dNHXkqqVPqWYhzis.wav
+mucs/test/NhV290ew2hDJfVqc.wav
+mucs/test/transcripts
+mucs/test/transcripts/utt2spk
+mucs/test/transcripts/segments
+mucs/test/transcripts/spk2utt
+mucs/test/transcripts/spkr_list
+mucs/test/transcripts/wav.scp
+mucs/test/transcripts/text
+mucs/test/HgEJsLGKNWSFl8T7.wav
+mucs/test/406yMKxIdSDHRf8H.wav
+mucs/test/lHGLSlYIb1clRBRF.wav
+mucs/test/nImMxiSAAmCMR3yi.wav
+mucs/test/swLUjPHatcTk0wf8.wav
+mucs/test/kGQKLyQ1HtnUNL1d.wav
+mucs/test/5baFeyjOxK8JQnNG.wav
+mucs/test/aVTioioyNUVPGF4t.wav
+mucs/test/Bmcrju1ByfdrXE9P.wav
 mucs/test/4xyIm2P6Xzlin341.wav
+mucs/test/VU6OA7HUqTpQNtm2.wav
+mucs/test/FV8hkymGWcy53lrf.wav
+mucs/test/jFTbEEy3BCO5axj5.wav
 + cd ..
 + python3 evals/speech/to_kaldi.py fleurs dl/fleurs_hi_in k/fleurs_hi
 k/fleurs_hi: 418 utterances, 418 recordings, 0 segments
@@ -236,8 +236,8 @@ wrote 1543 clips to /home/runner/work/kloo-app/kloo-app/golden (audio in /home/r
 {"lang": "hi", "variety": "hindi", "source": "fleurs_hi", "source_id": "18194643634199893480", "licence": "CC-BY-4.0", "injection": false, "synthetic": false, "conditions": ["clean"], "id": "flhi-hi-5d5d689e08", "duration_s": 8.64, "sha256": "1cc7d21b4f43b1545d97e1edc799b9d51df1dc64c4c9bf58720cf079e2f07775", "set_version": "speech-public-v1"}
 {"lang": "hi", "variety": "hindi", "source": "fleurs_hi", "source_id": "14585676639063535081", "licence": "CC-BY-4.0", "injection": false, "synthetic": false, "conditions": ["clean"], "id": "flhi-hi-640bc35fdb", "duration_s": 6.66, "sha256": "00841bad712931f9b014f7c16b35c7d823382d9ae10698a4d2189089e1a67c05", "set_version": "speech-public-v1"}
 ++ grep -o '"id": "mucs[^"]*"' /home/runner/work/kloo-app/kloo-app/golden/manifest.jsonl
-++ cut '-d"' -f4
 ++ head -3
+++ cut '-d"' -f4
 grep: write error: Broken pipe
 + for id in $(grep -o '"id": "mucs[^"]*"' "$GOLDEN/manifest.jsonl" | head -3 | cut -d'"' -f4)
 + cat /home/runner/work/kloo-app/kloo-app/golden/refs/mucs-hi-8268bf1c7c.txt
