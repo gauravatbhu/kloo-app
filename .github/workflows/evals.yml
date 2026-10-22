@@ -1,0 +1,28 @@
+name: evals
+
+on:
+  pull_request:
+  schedule:
+    - cron: "30 21 * * *"   # nightly, 03:00 IST
+  workflow_dispatch:
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Replace the sample files below with real harness output once the apps exist:
+      # the Android/iOS UI test jobs upload results.jsonl and capture.jsonl as artifacts.
+      - name: Privacy promise
+        run: python3 evals/privacy/check_egress.py evals/privacy/sample_capture.jsonl
+      - name: Quality suites
+        run: python3 evals/run_evals.py --results evals/golden/sample_results.jsonl --out-dir evals/reports
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: evals/reports/

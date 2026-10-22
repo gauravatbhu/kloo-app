@@ -1,0 +1,4 @@
+{"host":"abcd.supabase.co","path":"/auth/v1/token","body":"{\"grant_type\":\"id_token\"}"}
+{"host":"backups.r2.cloudflarestorage.com","path":"/u/7f3a/chunk-0001","body":"<ciphertext>"}
+{"host":"www.tiktok.com","path":"/oembed","query":"url=https://www.tiktok.com/@x/video/1"}
+{"host":"pagead2.googlesyndication.com","path":"/getads","query":"npa=1"}

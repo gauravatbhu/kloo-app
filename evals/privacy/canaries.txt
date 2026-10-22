@@ -1,0 +1,5 @@
+# Unique phrases planted in the test library's saves, transcripts, notes and questions.
+# If any appears in captured network traffic, user content left the phone.
+zebra-paneer-canary-71
+saffron-lighthouse-canary-42
+मोरपंख-कैनरी-19

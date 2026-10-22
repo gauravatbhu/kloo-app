@@ -1,0 +1,17 @@
+{"suite":"speech","id":"demo-en-1","lang":"en","reference":"roll it tight and toast both sides for two minutes","hypothesis":"roll it tight and toast both sides for two minutes"}
+{"suite":"speech","id":"demo-en-2","lang":"en","reference":"add the jaggery right at the end","hypothesis":"add the jaggery at the end"}
+{"suite":"speech","id":"demo-hi-1","lang":"hi","reference":"गुड़ सबसे आखिर में डालना है","hypothesis":"गुड़ सबसे आखिर में डालना है"}
+{"suite":"speech","id":"demo-hi-2","lang":"hi","reference":"ye cafe indiranagar mein hai aur pour over bahut accha hai","hypothesis":"ye cafe indiranagar me hai aur pour over bahut acha hai"}
+{"suite":"ocr","id":"demo-ocr-1","lang":"en","reference":"Paneer 200 g","hypothesis":"Paneer 200 g"}
+{"suite":"ocr","id":"demo-ocr-2","lang":"hi","reference":"हरी चटनी","hypothesis":"हरी चटनी"}
+{"suite":"filing","id":"demo-f-1","expected":"Recipe","predicted":"Recipe"}
+{"suite":"filing","id":"demo-f-2","expected":"Travel","predicted":"Travel"}
+{"suite":"filing","id":"demo-f-3","expected":"Fitness","predicted":"Fitness"}
+{"suite":"search","id":"demo-q-1","relevant_ids":["s12"],"ranked_ids":["s12","s4","s9"]}
+{"suite":"search","id":"demo-q-2","relevant_ids":["s7"],"ranked_ids":["s3","s7"]}
+{"suite":"answers","id":"demo-a-1","grounded":true,"citations_valid":true}
+{"suite":"answers","id":"demo-a-2","grounded":true,"citations_valid":true}
+{"suite":"speed","metric":"reel_read_seconds_p50","value":24.5}
+{"suite":"speed","metric":"ask_results_seconds_p50","value":0.6}
+{"suite":"speed","metric":"app_size_mb","value":118}
+{"suite":"privacy","passed":true}

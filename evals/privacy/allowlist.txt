@@ -1,0 +1,10 @@
+# Hosts the app may contact, with the reason. security-privacy approves every addition.
+# Format: host-or-wildcard  reason
+*.supabase.co              sign-in and account IDs (no content)
+*.r2.cloudflarestorage.com encrypted backup blobs only
+www.tiktok.com             link previews (oEmbed), user can turn off
+www.googleapis.com         YouTube sync with the user's Google sign-in
+*.googlesyndication.com    AdMob non-personalised ads (free tier)
+*.doubleclick.net          AdMob ad serving
+models.kept.example        optional model downloads (replace with real host)
+*.ingest.sentry.io         opt-in crash reports, scrubbed

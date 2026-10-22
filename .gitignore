@@ -1,0 +1,8 @@
+evals/reports/
+models/**/*.bin
+models/**/*.gguf
+models/**/*.tflite
+models/**/*.litertlm
+.DS_Store
+*.keystore
+.env*
