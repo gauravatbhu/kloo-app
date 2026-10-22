@@ -292,12 +292,13 @@ def main(argv=None):
     ap.add_argument("--summary", help="also write the per-group summary as JSON")
     ap.add_argument("--audio", help="audio folder (default GOLDEN/audio)")
     ap.add_argument("--check-audio", action="store_true",
-                    help="fail if audio is missing, not 16 kHz mono 16-bit WAV, or outside 15-90 s")
+                    help="fail if audio is missing, not 16 kHz mono 16-bit WAV, or outside 2-90 s")
     ap.add_argument("--verify-checksums", action="store_true", help="check manifest sha256 per clip")
     ap.add_argument("--lexicon", default=os.path.join(HERE, "translit_lexicon.tsv"))
     ap.add_argument("--translit", help="transliteration hook 'module:function' for Devanagari tokens")
     ap.add_argument("--missing", choices=("error", "empty"), default="error",
                     help="missing hypothesis: fail (default) or score as empty transcript")
+    ap.add_argument("--langs", help="only score these languages, e.g. 'hi' (for single-language models)")
     ap.add_argument("--engine", default="unknown")
     ap.add_argument("--model", default="unknown")
     ap.add_argument("--device", default="unknown")
@@ -305,6 +306,9 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     clips, problems = load_manifest(os.path.join(a.golden, "manifest.jsonl"))
+    if a.langs:
+        keep = {x.strip() for x in a.langs.split(",") if x.strip()}
+        clips = [c for c in clips if c["lang"] in keep]
     lexicon = load_lexicon(a.lexicon) if a.lexicon and os.path.isfile(a.lexicon) else {}
     translit = load_translit(a.translit)
 
