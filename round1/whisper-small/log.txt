@@ -1,150 +1,78 @@
-openai/whisper-small hi: 512/1086 RTF 0.513
-openai/whisper-small hi: 520/1086 RTF 0.511
-openai/whisper-small hi: 528/1086 RTF 0.515
-openai/whisper-small hi: 536/1086 RTF 0.512
-openai/whisper-small hi: 544/1086 RTF 0.511
-openai/whisper-small hi: 552/1086 RTF 0.513
-openai/whisper-small hi: 560/1086 RTF 0.512
-openai/whisper-small hi: 568/1086 RTF 0.512
-openai/whisper-small hi: 576/1086 RTF 0.513
-openai/whisper-small hi: 584/1086 RTF 0.512
-openai/whisper-small hi: 592/1086 RTF 0.509
-openai/whisper-small hi: 600/1086 RTF 0.509
-openai/whisper-small hi: 608/1086 RTF 0.507
-openai/whisper-small hi: 616/1086 RTF 0.507
-openai/whisper-small hi: 624/1086 RTF 0.506
-openai/whisper-small hi: 632/1086 RTF 0.508
-openai/whisper-small hi: 640/1086 RTF 0.514
-openai/whisper-small hi: 648/1086 RTF 0.519
-openai/whisper-small hi: 656/1086 RTF 0.525
-openai/whisper-small hi: 664/1086 RTF 0.529
-openai/whisper-small hi: 672/1086 RTF 0.527
-openai/whisper-small hi: 680/1086 RTF 0.532
-openai/whisper-small hi: 688/1086 RTF 0.537
-openai/whisper-small hi: 696/1086 RTF 0.538
-openai/whisper-small hi: 704/1086 RTF 0.540
-openai/whisper-small hi: 712/1086 RTF 0.543
-openai/whisper-small hi: 720/1086 RTF 0.548
-openai/whisper-small hi: 728/1086 RTF 0.553
-openai/whisper-small hi: 736/1086 RTF 0.557
-openai/whisper-small hi: 744/1086 RTF 0.562
-openai/whisper-small hi: 752/1086 RTF 0.567
-openai/whisper-small hi: 760/1086 RTF 0.569
-openai/whisper-small hi: 768/1086 RTF 0.571
-openai/whisper-small hi: 776/1086 RTF 0.570
-openai/whisper-small hi: 784/1086 RTF 0.574
-openai/whisper-small hi: 792/1086 RTF 0.578
-openai/whisper-small hi: 800/1086 RTF 0.583
-openai/whisper-small hi: 808/1086 RTF 0.586
-openai/whisper-small hi: 816/1086 RTF 0.590
-openai/whisper-small hi: 824/1086 RTF 0.594
-openai/whisper-small hi: 832/1086 RTF 0.597
-openai/whisper-small hi: 840/1086 RTF 0.600
-openai/whisper-small hi: 848/1086 RTF 0.604
-openai/whisper-small hi: 856/1086 RTF 0.607
-openai/whisper-small hi: 864/1086 RTF 0.610
-openai/whisper-small hi: 872/1086 RTF 0.612
-openai/whisper-small hi: 880/1086 RTF 0.615
-openai/whisper-small hi: 888/1086 RTF 0.618
-openai/whisper-small hi: 896/1086 RTF 0.622
-openai/whisper-small hi: 904/1086 RTF 0.625
-openai/whisper-small hi: 912/1086 RTF 0.629
-openai/whisper-small hi: 920/1086 RTF 0.633
-openai/whisper-small hi: 928/1086 RTF 0.633
-openai/whisper-small hi: 936/1086 RTF 0.633
-openai/whisper-small hi: 944/1086 RTF 0.636
-openai/whisper-small hi: 952/1086 RTF 0.639
-openai/whisper-small hi: 960/1086 RTF 0.642
-openai/whisper-small hi: 968/1086 RTF 0.646
-openai/whisper-small hi: 976/1086 RTF 0.649
-openai/whisper-small hi: 984/1086 RTF 0.652
-openai/whisper-small hi: 992/1086 RTF 0.652
-openai/whisper-small hi: 1000/1086 RTF 0.655
-openai/whisper-small hi: 1008/1086 RTF 0.658
-openai/whisper-small hi: 1016/1086 RTF 0.661
-openai/whisper-small hi: 1024/1086 RTF 0.665
-openai/whisper-small hi: 1032/1086 RTF 0.666
-openai/whisper-small hi: 1040/1086 RTF 0.668
-openai/whisper-small hi: 1048/1086 RTF 0.672
-openai/whisper-small hi: 1056/1086 RTF 0.675
-openai/whisper-small hi: 1064/1086 RTF 0.678
-openai/whisper-small hi: 1072/1086 RTF 0.682
-openai/whisper-small hi: 1080/1086 RTF 0.685
-openai/whisper-small hi: 1086/1086 RTF 0.688
-openai/whisper-small en: 8/457 RTF 0.298
-openai/whisper-small en: 16/457 RTF 0.269
-openai/whisper-small en: 24/457 RTF 0.269
-openai/whisper-small en: 32/457 RTF 0.288
-openai/whisper-small en: 40/457 RTF 0.287
-openai/whisper-small en: 48/457 RTF 0.279
-openai/whisper-small en: 56/457 RTF 0.287
-openai/whisper-small en: 64/457 RTF 0.285
-openai/whisper-small en: 72/457 RTF 0.287
-openai/whisper-small en: 80/457 RTF 0.287
-openai/whisper-small en: 88/457 RTF 0.281
-openai/whisper-small en: 96/457 RTF 0.285
-openai/whisper-small en: 104/457 RTF 0.290
-openai/whisper-small en: 112/457 RTF 0.292
-openai/whisper-small en: 120/457 RTF 0.291
-openai/whisper-small en: 128/457 RTF 0.292
-openai/whisper-small en: 136/457 RTF 0.289
-openai/whisper-small en: 144/457 RTF 0.289
-openai/whisper-small en: 152/457 RTF 0.290
-openai/whisper-small en: 160/457 RTF 0.292
-openai/whisper-small en: 168/457 RTF 0.292
-openai/whisper-small en: 176/457 RTF 0.294
-openai/whisper-small en: 184/457 RTF 0.287
-openai/whisper-small en: 192/457 RTF 0.286
-openai/whisper-small en: 200/457 RTF 0.287
-openai/whisper-small en: 208/457 RTF 0.288
-openai/whisper-small en: 216/457 RTF 0.287
-openai/whisper-small en: 224/457 RTF 0.285
-openai/whisper-small en: 232/457 RTF 0.288
-openai/whisper-small en: 240/457 RTF 0.290
-openai/whisper-small en: 248/457 RTF 0.288
-openai/whisper-small en: 256/457 RTF 0.287
-openai/whisper-small en: 264/457 RTF 0.286
-openai/whisper-small en: 272/457 RTF 0.288
-openai/whisper-small en: 280/457 RTF 0.288
-openai/whisper-small en: 288/457 RTF 0.287
-openai/whisper-small en: 296/457 RTF 0.286
-openai/whisper-small en: 304/457 RTF 0.287
-openai/whisper-small en: 312/457 RTF 0.288
-openai/whisper-small en: 320/457 RTF 0.287
-openai/whisper-small en: 328/457 RTF 0.287
-openai/whisper-small en: 336/457 RTF 0.287
-openai/whisper-small en: 344/457 RTF 0.286
-openai/whisper-small en: 352/457 RTF 0.287
-openai/whisper-small en: 360/457 RTF 0.286
-openai/whisper-small en: 368/457 RTF 0.284
-openai/whisper-small en: 376/457 RTF 0.285
-openai/whisper-small en: 384/457 RTF 0.287
-openai/whisper-small en: 392/457 RTF 0.287
-openai/whisper-small en: 400/457 RTF 0.287
-openai/whisper-small en: 408/457 RTF 0.285
-openai/whisper-small en: 416/457 RTF 0.285
-openai/whisper-small en: 424/457 RTF 0.286
-openai/whisper-small en: 432/457 RTF 0.286
-openai/whisper-small en: 440/457 RTF 0.286
-openai/whisper-small en: 448/457 RTF 0.286
-openai/whisper-small en: 456/457 RTF 0.286
-openai/whisper-small en: 457/457 RTF 0.287
-+ cp hyps/_timing.json out/whisper-small/timing.json
-+ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi,en --engine transformers --model openai/whisper-small --device github-ubuntu-cpu --out out/whisper-small/results.jsonl --summary out/whisper-small/summary.json --missing empty
-Speech eval: engine=transformers model=openai/whisper-small device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
-group                                        clips  words     WER  WERstr  CERstr urdu miss
-lang=en                                        457   9806    9.4%    9.4%    5.3%    0    0
-lang=en/condition=clean                        300   6482    8.8%    8.8%    4.9%    0    0
-lang=en/condition=fast                         157   3324   10.4%   10.4%    6.3%    0    0
-lang=en/condition=reencode                     157   3324   10.4%   10.4%    6.3%    0    0
-lang=en/source=fleurs_en                       457   9806    9.4%    9.4%    5.3%    0    0
-lang=hi                                       1086  21042  150.4%  158.4%  111.1%    0    0
-lang=hi/condition=clean                        717  13829  151.4%  159.6%  111.9%    0    0
-lang=hi/condition=fast                         369   7213  148.6%  156.1%  109.4%    0    0
-lang=hi/condition=reencode                     369   7213  148.6%  156.1%  109.4%    0    0
-lang=hi/source=fleurs_hi                       629  15409   71.3%   80.6%   44.5%    0    0
-lang=hi/source=mucs                            457   5633  366.9%  371.2%  288.0%    0    0
-variety=english                                457   9806    9.4%    9.4%    5.3%    0    0
-variety=hindi                                  629  15409   71.3%   80.6%   44.5%    0    0
-variety=hinglish                               457   5633  366.9%  371.2%  288.0%    0    0
-WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. urdu = clips whose output is >20% Arabic script.
++ pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
++ pip install -q transformers==4.46.3 numpy==2.1.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model openai/whisper-small --langs hi,en --limit 0
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50359]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+openai/whisper-small hi: 8/1086 RTF 3.241
+openai/whisper-small hi: 16/1086 RTF 3.234
+openai/whisper-small hi: 24/1086 RTF 2.904
+openai/whisper-small hi: 32/1086 RTF 2.922
+openai/whisper-small hi: 40/1086 RTF 3.010
+openai/whisper-small hi: 48/1086 RTF 2.914
+openai/whisper-small hi: 56/1086 RTF 2.980
+openai/whisper-small hi: 64/1086 RTF 3.136
+openai/whisper-small hi: 72/1086 RTF 3.131
+openai/whisper-small hi: 80/1086 RTF 3.034
+openai/whisper-small hi: 88/1086 RTF 3.008
+openai/whisper-small hi: 96/1086 RTF 2.988
+openai/whisper-small hi: 104/1086 RTF 2.944
+openai/whisper-small hi: 112/1086 RTF 2.933
+openai/whisper-small hi: 120/1086 RTF 2.922
+openai/whisper-small hi: 128/1086 RTF 2.866
+openai/whisper-small hi: 136/1086 RTF 2.817
+openai/whisper-small hi: 144/1086 RTF 2.833
+openai/whisper-small hi: 152/1086 RTF 2.807
+openai/whisper-small hi: 160/1086 RTF 2.789
+openai/whisper-small hi: 168/1086 RTF 2.773
+openai/whisper-small hi: 176/1086 RTF 2.775
+openai/whisper-small hi: 184/1086 RTF 2.778
+openai/whisper-small hi: 192/1086 RTF 2.806
+openai/whisper-small hi: 200/1086 RTF 2.816
+openai/whisper-small hi: 208/1086 RTF 2.865
+openai/whisper-small hi: 216/1086 RTF 2.847
+openai/whisper-small hi: 224/1086 RTF 2.865
+openai/whisper-small hi: 232/1086 RTF 2.848
+openai/whisper-small hi: 240/1086 RTF 2.870
+openai/whisper-small hi: 248/1086 RTF 2.867
+openai/whisper-small hi: 256/1086 RTF 2.857
+openai/whisper-small hi: 264/1086 RTF 2.858
+openai/whisper-small hi: 272/1086 RTF 2.886
+openai/whisper-small hi: 280/1086 RTF 2.874
+openai/whisper-small hi: 288/1086 RTF 2.877
+openai/whisper-small hi: 296/1086 RTF 2.882
+openai/whisper-small hi: 304/1086 RTF 2.874
+openai/whisper-small hi: 312/1086 RTF 2.867
+openai/whisper-small hi: 320/1086 RTF 2.855
+openai/whisper-small hi: 328/1086 RTF 2.837
+openai/whisper-small hi: 336/1086 RTF 2.855
+openai/whisper-small hi: 344/1086 RTF 2.844
+openai/whisper-small hi: 352/1086 RTF 2.846
+openai/whisper-small hi: 360/1086 RTF 2.846
+openai/whisper-small hi: 368/1086 RTF 2.864
+openai/whisper-small hi: 376/1086 RTF 2.865
+openai/whisper-small hi: 384/1086 RTF 2.842
+openai/whisper-small hi: 392/1086 RTF 2.866
+openai/whisper-small hi: 400/1086 RTF 2.872
+openai/whisper-small hi: 408/1086 RTF 2.874
+openai/whisper-small hi: 416/1086 RTF 2.893
+openai/whisper-small hi: 424/1086 RTF 2.889
+openai/whisper-small hi: 432/1086 RTF 2.899
+openai/whisper-small hi: 440/1086 RTF 2.896
+openai/whisper-small hi: 448/1086 RTF 2.893
+openai/whisper-small hi: 456/1086 RTF 2.902
+openai/whisper-small hi: 464/1086 RTF 2.910
+openai/whisper-small hi: 472/1086 RTF 2.881
+openai/whisper-small hi: 480/1086 RTF 2.894
+openai/whisper-small hi: 488/1086 RTF 2.901
+openai/whisper-small hi: 496/1086 RTF 2.888
+openai/whisper-small hi: 504/1086 RTF 2.885
+openai/whisper-small hi: 512/1086 RTF 2.898
+openai/whisper-small hi: 520/1086 RTF 2.892
+openai/whisper-small hi: 528/1086 RTF 2.907
+openai/whisper-small hi: 536/1086 RTF 2.898
+openai/whisper-small hi: 544/1086 RTF 2.898
+openai/whisper-small hi: 552/1086 RTF 2.900
