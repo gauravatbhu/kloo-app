@@ -1,8 +1,9 @@
 # On-device speech options for Hindi, Hinglish and Indian English
 
 Author: ml-engineer. Date: 2026-10-22. Status: desk research. **Nothing here was
-measured by us yet**: no weights could be downloaded in this environment and
-the golden set is not recorded. Every WER below is someone else's number on
+measured by us yet**: no weights or datasets could be downloaded in this
+environment. The golden set is now built from public datasets
+(evals/golden/speech/README.md), not recorded by volunteers. Every WER below is someone else's number on
 someone else's test set. Speed figures marked *estimate* are reasoning, not
 measurements.
 
@@ -10,8 +11,11 @@ measurements.
 - A 60 s reel read (transcribe + OCR + filing + embedding) in ≤ 30 s p50 on a
   ₹15–25k Android phone (evals/README.md). Transcription should take about half
   of that, so a real-time factor (RTF) around **0.3 or better** on CPU.
-- App ≤ 150 MB before optional downloads. Anything over ~100 MB is in practice
-  an optional, first-run download.
+- Size: **not a constraint** (founders, 2026-10-22). Models ship inside the
+  app (docs/decisions/0003), within store limits: Google Play install-time
+  asset packs up to 1.5 GB each and 4 GB in total; App Store 4 GB
+  uncompressed. So we can bundle two speech models (English + Hindi) and use
+  higher-precision quantisation (q8 instead of q5) where it helps accuracy.
 - English, Hindi and Hinglish (code-mixed, often typed in Roman script by
   users) all first-class; transcripts feed search and filing, so getting the
   words right matters more than which script they are in.
@@ -110,6 +114,10 @@ transcript) rather than by forcing one engine to output one script.
 
 ## Recommendation: what to benchmark first
 
+Because size no longer matters, the likely shipping setup is **both**: stock
+Whisper small for English plus the best Hindi model, with language routing.
+Round 1 picks the Hindi model.
+
 Round 1 (on the golden set, one tier-2 Android phone plus an iPhone 12/13,
 language pinned from the manifest, then auto-detect):
 
@@ -159,17 +167,23 @@ in.
    paths (Qualcomm AI Hub, MediaTek NeuroPilot; vendor-specific), background
    processing on charge (already planned), or transcribing only the first N
    seconds immediately and the rest later.
-2. **Size**: no Whisper small or Hindi model fits inside the 150 MB app, so
-   speech models must be an optional first-run download. That needs a
-   download manifest, a hosting choice and a security-privacy review of the
-   new network call.
+2. **Size** (resolved): founders accepted a larger app, so speech models are
+   bundled (docs/decisions/0003). No download server, no extra network host.
+   Remaining cost: a bigger install may lose some installs on low-storage
+   phones; growth-research tracks install conversion against app size.
 3. **Hinglish script chaos**: engines disagree on script and Whisper sometimes
    emits Urdu script or translates. Pin the language per clip, and make search
    script-agnostic.
 4. **Licence and data provenance** of community fine-tunes: weights may be
    permissive while training data is YouTube-derived or share-alike.
-5. **Golden-set size**: 50 clips per language is small; per-condition slices
-   are directional only.
+5. **Golden-set realism**: public datasets are cleaner and more formal than
+   reels, and the only commercially usable Hinglish set (MUCS 2021) is
+   lecture speech. Augmentation (music, noise, speed, re-encode, pseudo-reels)
+   narrows the gap but real-world WER will be somewhat worse than measured.
+6. **Test-set contamination**: AI4Bharat models (IndicConformer, IndicWhisper)
+   are trained on AI4Bharat corpora (likely including IndicVoices and
+   Kathbath training splits; confirm on each model card before round 1). We score on held-out splits and Lahaja (a benchmark-only set), and
+   report per source so contaminated sources can be excluded per model.
 
 ## Licences recorded
 | Component | Licence | Commercial use |
@@ -186,6 +200,9 @@ in.
 | Vosk models listed | Apache-2.0 | Yes |
 | sherpa-onnx | Apache-2.0 | Yes |
 | Meta MMS, SeamlessM4T | CC-BY-NC-4.0 | **No**: excluded |
+
+Evaluation datasets and their licences are recorded in
+evals/golden/speech/README.md (all allow commercial use).
 
 ## Sources
 - Vistaar / IndicWhisper benchmark: https://arxiv.org/abs/2305.15386 , code and licence https://github.com/AI4Bharat/vistaar

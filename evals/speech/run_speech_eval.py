@@ -49,7 +49,8 @@ from speech_normalise import (  # noqa: E402
 
 LANGS = ("en", "hi")
 VARIETIES = {"en": {"english"}, "hi": {"hindi", "hinglish"}}
-MIN_SECONDS, MAX_SECONDS = 15.0, 90.0
+# Public-set utterances are short (2-30 s); pseudo-reels run up to 90 s.
+MIN_SECONDS, MAX_SECONDS = 2.0, 90.0
 _TS_LINE = re.compile(r"^\s*(\d+\s*$|WEBVTT|NOTE\b|\d{1,2}:\d{2}(:\d{2})?[.,]\d{3}\s*-->)")
 _TS_PREFIX = re.compile(r"^\s*\[\s*\d{1,2}:\d{2}(:\d{2})?[.,]\d{3}\s*-->\s*[\d:.,]+\s*\]\s*")
 
@@ -216,6 +217,8 @@ def evaluate(clips, golden_dir, hyp_dir, lexicon, translit, missing="error"):
             "suite": "speech", "id": cid, "lang": lang,
             "reference": ref, "hypothesis": hyp,
             "variety": c["variety"], "topic": c.get("topic"),
+            "source": c.get("source"), "licence": c.get("licence"),
+            "synthetic": bool(c.get("synthetic")),
             "conditions": c.get("conditions", []), "injection": bool(c.get("injection")),
             "normaliser": NORMALISER_VERSION,
             "missing_hypothesis": hyp_path is None,
@@ -233,7 +236,7 @@ def _rate(rows, kind, num, den):
 
 
 def summarise(rows):
-    """Corpus-level WER per group: lang, variety, condition, topic, injection."""
+    """Corpus-level WER per group: lang, variety, source, condition, topic, injection."""
     groups = {}
 
     def add(key, r):
@@ -242,7 +245,10 @@ def summarise(rows):
     for r in rows:
         add(f"lang={r['lang']}", r)
         add(f"variety={r['variety']}", r)
-        add(f"lang={r['lang']}/topic={r.get('topic') or 'none'}", r)
+        if r.get("source"):
+            add(f"lang={r['lang']}/source={r['source']}", r)
+        if r.get("topic"):
+            add(f"lang={r['lang']}/topic={r['topic']}", r)
         for cond in r.get("conditions") or ["clean"]:
             add(f"lang={r['lang']}/condition={cond}", r)
         if r.get("injection"):

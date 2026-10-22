@@ -1,0 +1,5 @@
+# Only needed to build the public golden set (prepare_public_set.py) from the network.
+# The scorer (run_speech_eval.py) is stdlib-only. ffmpeg must be on PATH.
+numpy>=1.24
+datasets>=2.19,<4.0
+soundfile>=0.12

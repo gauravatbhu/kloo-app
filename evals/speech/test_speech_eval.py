@@ -191,7 +191,7 @@ class AudioCheckTest(unittest.TestCase):
             _write_wav(good, 20)
             self.assertEqual(rse.check_audio(good), [])
             short = os.path.join(d, "short.wav")
-            _write_wav(short, 5)
+            _write_wav(short, 1)
             self.assertTrue(any("outside" in p for p in rse.check_audio(short)))
             stereo = os.path.join(d, "stereo.wav")
             _write_wav(stereo, 20, rate=44100, channels=2)
