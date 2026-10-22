@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kept evaluation runner.
+"""Kloo evaluation runner.
 
 Reads a JSONL file of per-item results produced by the apps' eval harnesses,
 computes each suite's metric, checks it against evals/thresholds.json (and the

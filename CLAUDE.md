@@ -1,6 +1,6 @@
-# Kept (working name) — project guide for Claude and the agent team
+# Kloo (working name) — project guide for Claude and the agent team
 
-Kept lets people save reels and posts from Instagram, TikTok and YouTube,
+Kloo lets people save reels and posts from Instagram, TikTok and YouTube,
 reads them on the phone, and answers questions about them. Everything runs
 on-device. Name is a placeholder until trademark checks finish.
 

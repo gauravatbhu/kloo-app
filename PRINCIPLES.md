@@ -9,7 +9,7 @@ this file needs both founders' approval and a decision record in
 1. A user's saves, videos, transcripts, frames, notes, questions and answers
    never leave their phone, except inside an end-to-end encrypted backup or
    shared board that only the user (and people they invited) can decrypt.
-2. Kept's servers never hold readable user content. Keys never leave devices.
+2. Kloo's servers never hold readable user content. Keys never leave devices.
 3. No analytics SDK receives content. Crash reports are opt-in and scrubbed.
 4. Photo access is limited and only used to find newly downloaded reels.
 5. Clipboard is read only after an explicit user tap.

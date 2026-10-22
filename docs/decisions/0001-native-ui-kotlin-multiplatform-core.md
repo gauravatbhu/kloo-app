@@ -5,7 +5,7 @@
 - Deciders: Gaurav, Claude
 
 ## Context
-Kept depends on platform-specific pieces: share extensions, Apple Foundation
+Kloo depends on platform-specific pieces: share extensions, Apple Foundation
 Models, Gemini Nano, Vision/ML Kit, background processing rules. The team is
 two founders plus AI agents, so duplicated logic is expensive.
 

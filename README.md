@@ -1,6 +1,6 @@
-# Kept (working name)
+# Kloo (working name)
 
-Save reels from Instagram, TikTok and YouTube; Kept reads them on your phone
+Save reels from Instagram, TikTok and YouTube; Kloo reads them on your phone
 and answers questions about them. Your saves never leave your phone.
 
 This repository is the company's shared memory: product rules, architecture,
