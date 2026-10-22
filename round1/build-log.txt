@@ -148,7 +148,7 @@ test_numbers_currency_percent (test_speech_eval.StrictNormaliseTest.test_numbers
 test_zero_width_chars_do_not_split_words (test_speech_eval.StrictNormaliseTest.test_zero_width_chars_do_not_split_words) ... ok
 
 ----------------------------------------------------------------------
-Ran 33 tests in 12.051s
+Ran 33 tests in 11.420s
 
 OK
 + mkdir -p dl
