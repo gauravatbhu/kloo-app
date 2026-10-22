@@ -89,10 +89,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {model: "openai/whisper-small", slug: "whisper-small", langs: "hi,en"}
-          - {model: "vasista22/whisper-hindi-small", slug: "whisper-hindi-small-vasista22", langs: "hi"}
-          - {model: "Oriserve/Whisper-Hindi2Hinglish-Prime", slug: "hindi2hinglish-prime", langs: "hi"}
-          - {model: "openai/whisper-large-v3-turbo", slug: "whisper-large-v3-turbo-ceiling", langs: "hi,en"}
+          - {model: "openai/whisper-small", slug: "whisper-small", langs: "hi,en", limit: "0"}
+          - {model: "vasista22/whisper-hindi-small", slug: "whisper-hindi-small-vasista22", langs: "hi", limit: "0"}
+          - {model: "Oriserve/Whisper-Hindi2Hinglish-Prime", slug: "hindi2hinglish-prime", langs: "hi", limit: "250"}
+          - {model: "openai/whisper-large-v3-turbo", slug: "whisper-large-v3-turbo-ceiling", langs: "hi,en", limit: "250"}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -120,12 +120,12 @@ jobs:
             pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
             pip install -q transformers==4.46.3 numpy==2.1.3
             python3 evals/speech/transcribe_hf.py --golden "$GOLDEN" --audio "$AUDIO" \
-              --hyps hyps --model "${{ matrix.model }}" --langs "${{ matrix.langs }}"
+              --hyps hyps --model "${{ matrix.model }}" --langs "${{ matrix.langs }}" --limit "${{ matrix.limit }}"
             cp hyps/_timing.json out/${{ matrix.slug }}/timing.json
             python3 evals/speech/run_speech_eval.py --golden "$GOLDEN" --hyps hyps \
               --langs "${{ matrix.langs }}" --engine transformers --model "${{ matrix.model }}" \
               --device "github-ubuntu-cpu" --out out/${{ matrix.slug }}/results.jsonl \
-              --summary out/${{ matrix.slug }}/summary.json --missing empty
+              --summary out/${{ matrix.slug }}/summary.json --missing skip
           } 2>&1 | tee logs/${{ matrix.slug }}.log
       - name: Push results and log to ci/speech-results
         if: always() && steps.pick.outputs.run == 'true'

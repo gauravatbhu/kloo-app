@@ -32,7 +32,9 @@ def main(argv=None):
     ap.add_argument("--hyps", required=True)
     ap.add_argument("--model", required=True)
     ap.add_argument("--langs", default="hi,en")
-    ap.add_argument("--limit", type=int, default=0, help="max clips per language (0 = all)")
+    ap.add_argument("--limit", type=int, default=0,
+                    help="max clips per source, in manifest order (0 = all); a seeded spread")
+    ap.add_argument("--greedy", action="store_true", help="disable temperature fallback")
     ap.add_argument("--batch", type=int, default=8)
     a = ap.parse_args(argv)
 
@@ -50,16 +52,28 @@ def main(argv=None):
             if c["lang"] in langs:
                 clips.append(c)
     if a.limit:
-        per = {}
-        clips = [c for c in clips if per.setdefault(c["lang"], []).append(1) or len(per[c["lang"]]) <= a.limit]
+        by_src = {}
+        for c in clips:
+            by_src.setdefault(c.get("source") or c["lang"], []).append(c)
+        keep = set()
+        for src, cs in by_src.items():
+            cs = sorted(cs, key=lambda c: c["id"])  # ids are hashes: a stable pseudo-random spread
+            keep.update(c["id"] for c in cs[:a.limit])
+        clips = [c for c in clips if c["id"] in keep]
     os.makedirs(a.hyps, exist_ok=True)
     window = 30 * 16000
 
+    # Temperature fallback, as phone engines (whisper.cpp, WhisperKit) and openai-whisper
+    # decode: retry at higher temperature when output is repetitive or low-confidence.
+    fallback = dict(temperature=(0.0, 0.2, 0.4, 0.6, 0.8, 1.0), compression_ratio_threshold=1.35,
+                    logprob_threshold=-1.0) if not a.greedy else {}
+
     def generate(features, lang):
-        """Pin language + transcribe. Older fine-tunes need forced_decoder_ids instead."""
+        """Pin language + transcribe. Older fine-tunes need a borrowed generation config."""
         with torch.inference_mode():
             try:
-                return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
+                return model.generate(features, language=lang, task="transcribe",
+                                      max_new_tokens=440, **fallback)
             except ValueError as e:
                 if "generation config is outdated" not in str(e):
                     raise
@@ -72,7 +86,8 @@ def main(argv=None):
                     base = "large-v3" if cfg.num_mel_bins == 128 else "large-v2"
                 print(f"generation config outdated; using openai/whisper-{base}'s", file=sys.stderr)
                 model.generation_config = GenerationConfig.from_pretrained(f"openai/whisper-{base}")
-                return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
+                return model.generate(features, language=lang, task="transcribe",
+                                      max_new_tokens=440, **fallback)
 
     def run(batch, lang):
         # Split anything longer than 30 s into consecutive 30 s windows (rare: pseudo-reels).

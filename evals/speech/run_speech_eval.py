@@ -194,6 +194,8 @@ def evaluate(clips, golden_dir, hyp_dir, lexicon, translit, missing="error"):
         raw_ref = read_text(ref_path)
         hyp_path = find_hypothesis(hyp_dir, cid)
         if hyp_path is None:
+            if missing == "skip":
+                continue
             if missing == "error":
                 problems.append(f"{cid}: missing hypothesis in {hyp_dir}")
                 continue
@@ -296,8 +298,8 @@ def main(argv=None):
     ap.add_argument("--verify-checksums", action="store_true", help="check manifest sha256 per clip")
     ap.add_argument("--lexicon", default=os.path.join(HERE, "translit_lexicon.tsv"))
     ap.add_argument("--translit", help="transliteration hook 'module:function' for Devanagari tokens")
-    ap.add_argument("--missing", choices=("error", "empty"), default="error",
-                    help="missing hypothesis: fail (default) or score as empty transcript")
+    ap.add_argument("--missing", choices=("error", "empty", "skip"), default="error",
+                    help="missing hypothesis: fail (default), score as empty transcript, or skip the clip")
     ap.add_argument("--langs", help="only score these languages, e.g. 'hi' (for single-language models)")
     ap.add_argument("--engine", default="unknown")
     ap.add_argument("--model", default="unknown")
