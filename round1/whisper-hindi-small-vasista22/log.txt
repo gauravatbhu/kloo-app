@@ -3,36 +3,98 @@
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-+ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model vasista22/whisper-hindi-small --langs hi
-Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 62, in generate
-    return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 536, in generate
-    self._set_language_and_task(
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 1253, in _set_language_and_task
-    raise ValueError(
-ValueError: The generation config is outdated and is thus not compatible with the `language` argument to `generate`. Either set the language using the `forced_decoder_ids` in the model config, or update the generation config as per the instructions https://github.com/huggingface/transformers/issues/25084#issuecomment-1664398224
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 108, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 91, in main
-    out, secs = run(batch, {"hi": "hindi", "en": "english"}[lang])
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 77, in run
-    ids = generate(feats, lang)
-          ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/kloo-app/kloo-app/evals/speech/transcribe_hf.py", line 66, in generate
-    return model.generate(features, max_new_tokens=440)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 650, in generate
-    decoder_input_ids, kwargs = self._prepare_decoder_input_ids(
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py", line 1681, in _prepare_decoder_input_ids
-    prev_start_of_text = suppress_tokens[-2] if suppress_tokens is not None else None
-                         ~~~~~~~~~~~~~~~^^^^
-IndexError: index -2 is out of bounds for dimension 0 with size 0
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model vasista22/whisper-hindi-small --langs hi --limit 0
+generation config outdated; using openai/whisper-small's
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50359]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
+vasista22/whisper-hindi-small hi: 8/1086 RTF 2.766
+vasista22/whisper-hindi-small hi: 16/1086 RTF 2.633
+vasista22/whisper-hindi-small hi: 24/1086 RTF 2.291
+vasista22/whisper-hindi-small hi: 32/1086 RTF 2.390
+vasista22/whisper-hindi-small hi: 40/1086 RTF 2.396
+vasista22/whisper-hindi-small hi: 48/1086 RTF 2.403
+vasista22/whisper-hindi-small hi: 56/1086 RTF 2.411
+vasista22/whisper-hindi-small hi: 64/1086 RTF 2.431
+vasista22/whisper-hindi-small hi: 72/1086 RTF 2.417
+vasista22/whisper-hindi-small hi: 80/1086 RTF 2.389
+vasista22/whisper-hindi-small hi: 88/1086 RTF 2.389
+vasista22/whisper-hindi-small hi: 96/1086 RTF 2.374
+vasista22/whisper-hindi-small hi: 104/1086 RTF 2.310
+vasista22/whisper-hindi-small hi: 112/1086 RTF 2.285
+vasista22/whisper-hindi-small hi: 120/1086 RTF 2.283
+vasista22/whisper-hindi-small hi: 128/1086 RTF 2.251
+vasista22/whisper-hindi-small hi: 136/1086 RTF 2.222
+vasista22/whisper-hindi-small hi: 144/1086 RTF 2.242
+vasista22/whisper-hindi-small hi: 152/1086 RTF 2.237
+vasista22/whisper-hindi-small hi: 160/1086 RTF 2.233
+vasista22/whisper-hindi-small hi: 168/1086 RTF 2.224
+vasista22/whisper-hindi-small hi: 176/1086 RTF 2.215
+vasista22/whisper-hindi-small hi: 184/1086 RTF 2.235
+vasista22/whisper-hindi-small hi: 192/1086 RTF 2.256
+vasista22/whisper-hindi-small hi: 200/1086 RTF 2.278
+vasista22/whisper-hindi-small hi: 208/1086 RTF 2.299
+vasista22/whisper-hindi-small hi: 216/1086 RTF 2.283
+vasista22/whisper-hindi-small hi: 224/1086 RTF 2.275
+vasista22/whisper-hindi-small hi: 232/1086 RTF 2.261
+vasista22/whisper-hindi-small hi: 240/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 248/1086 RTF 2.256
+vasista22/whisper-hindi-small hi: 256/1086 RTF 2.263
+vasista22/whisper-hindi-small hi: 264/1086 RTF 2.256
+vasista22/whisper-hindi-small hi: 272/1086 RTF 2.264
+vasista22/whisper-hindi-small hi: 280/1086 RTF 2.265
+vasista22/whisper-hindi-small hi: 288/1086 RTF 2.259
+vasista22/whisper-hindi-small hi: 296/1086 RTF 2.275
+vasista22/whisper-hindi-small hi: 304/1086 RTF 2.277
+vasista22/whisper-hindi-small hi: 312/1086 RTF 2.288
+vasista22/whisper-hindi-small hi: 320/1086 RTF 2.275
+vasista22/whisper-hindi-small hi: 328/1086 RTF 2.260
+vasista22/whisper-hindi-small hi: 336/1086 RTF 2.274
+vasista22/whisper-hindi-small hi: 344/1086 RTF 2.271
+vasista22/whisper-hindi-small hi: 352/1086 RTF 2.259
+vasista22/whisper-hindi-small hi: 360/1086 RTF 2.250
+vasista22/whisper-hindi-small hi: 368/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 376/1086 RTF 2.252
+vasista22/whisper-hindi-small hi: 384/1086 RTF 2.240
+vasista22/whisper-hindi-small hi: 392/1086 RTF 2.241
+vasista22/whisper-hindi-small hi: 400/1086 RTF 2.240
+vasista22/whisper-hindi-small hi: 408/1086 RTF 2.249
+vasista22/whisper-hindi-small hi: 416/1086 RTF 2.267
+vasista22/whisper-hindi-small hi: 424/1086 RTF 2.269
+vasista22/whisper-hindi-small hi: 432/1086 RTF 2.271
+vasista22/whisper-hindi-small hi: 440/1086 RTF 2.261
+vasista22/whisper-hindi-small hi: 448/1086 RTF 2.259
+vasista22/whisper-hindi-small hi: 456/1086 RTF 2.274
+vasista22/whisper-hindi-small hi: 464/1086 RTF 2.271
+vasista22/whisper-hindi-small hi: 472/1086 RTF 2.251
+vasista22/whisper-hindi-small hi: 480/1086 RTF 2.259
+vasista22/whisper-hindi-small hi: 488/1086 RTF 2.266
+vasista22/whisper-hindi-small hi: 496/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 504/1086 RTF 2.250
+vasista22/whisper-hindi-small hi: 512/1086 RTF 2.258
+vasista22/whisper-hindi-small hi: 520/1086 RTF 2.259
+vasista22/whisper-hindi-small hi: 528/1086 RTF 2.262
+vasista22/whisper-hindi-small hi: 536/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 544/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 552/1086 RTF 2.261
+vasista22/whisper-hindi-small hi: 560/1086 RTF 2.257
+vasista22/whisper-hindi-small hi: 568/1086 RTF 2.265
+vasista22/whisper-hindi-small hi: 576/1086 RTF 2.262
+vasista22/whisper-hindi-small hi: 584/1086 RTF 2.262
+vasista22/whisper-hindi-small hi: 592/1086 RTF 2.258
+vasista22/whisper-hindi-small hi: 600/1086 RTF 2.265
+vasista22/whisper-hindi-small hi: 608/1086 RTF 2.263
+vasista22/whisper-hindi-small hi: 616/1086 RTF 2.256
+vasista22/whisper-hindi-small hi: 624/1086 RTF 2.256
+vasista22/whisper-hindi-small hi: 632/1086 RTF 2.258
+vasista22/whisper-hindi-small hi: 640/1086 RTF 2.269
+vasista22/whisper-hindi-small hi: 648/1086 RTF 2.279
+vasista22/whisper-hindi-small hi: 656/1086 RTF 2.291
+vasista22/whisper-hindi-small hi: 664/1086 RTF 2.296
+vasista22/whisper-hindi-small hi: 672/1086 RTF 2.287
+vasista22/whisper-hindi-small hi: 680/1086 RTF 2.300
+vasista22/whisper-hindi-small hi: 688/1086 RTF 2.310
+vasista22/whisper-hindi-small hi: 696/1086 RTF 2.314
+vasista22/whisper-hindi-small hi: 704/1086 RTF 2.313
+vasista22/whisper-hindi-small hi: 712/1086 RTF 2.319
+vasista22/whisper-hindi-small hi: 720/1086 RTF 2.330
