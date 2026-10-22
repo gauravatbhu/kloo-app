@@ -37,11 +37,11 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     import torch
-    from transformers import pipeline
+    from transformers import AutoProcessor, WhisperForConditionalGeneration
 
     torch.set_num_threads(os.cpu_count() or 4)
-    asr = pipeline("automatic-speech-recognition", model=a.model, device="cpu",
-                   torch_dtype=torch.float32)
+    processor = AutoProcessor.from_pretrained(a.model)
+    model = WhisperForConditionalGeneration.from_pretrained(a.model, torch_dtype=torch.float32).eval()
     langs = [x for x in a.langs.split(",") if x]
     clips = []
     with open(os.path.join(a.golden, "manifest.jsonl"), encoding="utf-8") as f:
@@ -53,20 +53,33 @@ def main(argv=None):
         per = {}
         clips = [c for c in clips if per.setdefault(c["lang"], []).append(1) or len(per[c["lang"]]) <= a.limit]
     os.makedirs(a.hyps, exist_ok=True)
+    window = 30 * 16000
+
+    def generate(features, lang):
+        """Pin language + transcribe. Older fine-tunes need forced_decoder_ids instead."""
+        with torch.inference_mode():
+            try:
+                return model.generate(features, language=lang, task="transcribe", max_new_tokens=440)
+            except ValueError:
+                model.generation_config.forced_decoder_ids = processor.get_decoder_prompt_ids(
+                    language=lang, task="transcribe")
+                return model.generate(features, max_new_tokens=440)
 
     def run(batch, lang):
-        audios = [{"raw": read_wav(os.path.join(a.audio, c["id"] + ".wav")), "sampling_rate": 16000}
-                  for c in batch]
-        kwargs = {"task": "transcribe", "language": lang}
-        try:
-            return asr(audios, batch_size=len(audios), chunk_length_s=30,
-                       generate_kwargs=kwargs), sum(len(x["raw"]) for x in audios) / 16000
-        except Exception as e:  # older fine-tunes lack language tokens in generation_config
-            print(f"language kwarg failed ({e}); retrying with forced_decoder_ids", file=sys.stderr)
-            ids = asr.tokenizer.get_decoder_prompt_ids(language=lang, task="transcribe")
-            asr.model.generation_config.forced_decoder_ids = ids
-            return asr(audios, batch_size=len(audios), chunk_length_s=30), \
-                sum(len(x["raw"]) for x in audios) / 16000
+        # Split anything longer than 30 s into consecutive 30 s windows (rare: pseudo-reels).
+        pieces, owner = [], []
+        for k, c in enumerate(batch):
+            audio = read_wav(os.path.join(a.audio, c["id"] + ".wav"))
+            for start in range(0, max(len(audio), 1), window):
+                pieces.append(audio[start:start + window])
+                owner.append(k)
+        feats = processor.feature_extractor(pieces, sampling_rate=16000, return_tensors="pt").input_features
+        ids = generate(feats, lang)
+        texts = processor.batch_decode(ids, skip_special_tokens=True)
+        out = [""] * len(batch)
+        for k, t in zip(owner, texts):
+            out[k] = (out[k] + " " + t.strip()).strip()
+        return out, sum(len(p) for p in pieces) / 16000
 
     timing = {}
     for lang in langs:
@@ -80,7 +93,7 @@ def main(argv=None):
             audio_s += secs
             for c, o in zip(batch, out):
                 with open(os.path.join(a.hyps, c["id"] + ".txt"), "w", encoding="utf-8") as f:
-                    f.write(o["text"].strip() + "\n")
+                    f.write(o + "\n")
             print(f"{a.model} {lang}: {min(i + a.batch, len(todo))}/{len(todo)} "
                   f"RTF {compute_s / max(audio_s, 1e-9):.3f}", flush=True)
         timing[lang] = {"clips": len(todo), "audio_s": round(audio_s, 1),
