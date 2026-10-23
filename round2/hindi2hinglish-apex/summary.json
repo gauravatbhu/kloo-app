@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "engine": "transformers",
+    "model": "Oriserve/Whisper-Hindi2Hinglish-Apex",
+    "device": "github-ubuntu-cpu",
+    "tier": null
+  },
+  "normaliser": "kloo-speech-norm-1",
+  "phonetic": "kloo-speech-phon-1",
+  "groups": {
+    "lang=hi": {
+      "clips": 400,
+      "ref_words": 7263,
+      "wer": 0.2628,
+      "wer_strict": 0.9847,
+      "wer_phonetic": 0.2116,
+      "cer_strict": 0.9153,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=clean": {
+      "clips": 266,
+      "ref_words": 4803,
+      "wer": 0.2673,
+      "wer_strict": 0.9869,
+      "wer_phonetic": 0.2144,
+      "cer_strict": 0.9177,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=fast": {
+      "clips": 134,
+      "ref_words": 2460,
+      "wer": 0.2541,
+      "wer_strict": 0.9805,
+      "wer_phonetic": 0.2061,
+      "cer_strict": 0.9106,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=reencode": {
+      "clips": 134,
+      "ref_words": 2460,
+      "wer": 0.2541,
+      "wer_strict": 0.9805,
+      "wer_phonetic": 0.2061,
+      "cer_strict": 0.9106,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=fleurs_hi": {
+      "clips": 200,
+      "ref_words": 4712,
+      "wer": 0.2039,
+      "wer_strict": 1.0354,
+      "wer_phonetic": 0.1469,
+      "cer_strict": 1.0067,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=mucs": {
+      "clips": 200,
+      "ref_words": 2551,
+      "wer": 0.3716,
+      "wer_strict": 0.891,
+      "wer_phonetic": 0.3312,
+      "cer_strict": 0.7503,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hindi": {
+      "clips": 200,
+      "ref_words": 4712,
+      "wer": 0.2039,
+      "wer_strict": 1.0354,
+      "wer_phonetic": 0.1469,
+      "cer_strict": 1.0067,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hinglish": {
+      "clips": 200,
+      "ref_words": 2551,
+      "wer": 0.3716,
+      "wer_strict": 0.891,
+      "wer_phonetic": 0.3312,
+      "cer_strict": 0.7503,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    }
+  }
+}
