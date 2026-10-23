@@ -3,31 +3,120 @@
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-+ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model openai/whisper-large-v3-turbo --langs hi,en --limit 250
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model openai/whisper-large-v3-turbo --langs hi,en --limit 250 --max-minutes 270
 You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
 The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
-From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
-openai/whisper-large-v3-turbo hi: 8/500 RTF 9.945
-openai/whisper-large-v3-turbo hi: 16/500 RTF 8.676
-openai/whisper-large-v3-turbo hi: 24/500 RTF 9.273
-openai/whisper-large-v3-turbo hi: 32/500 RTF 9.181
-openai/whisper-large-v3-turbo hi: 40/500 RTF 8.949
-openai/whisper-large-v3-turbo hi: 48/500 RTF 8.701
-openai/whisper-large-v3-turbo hi: 56/500 RTF 8.824
-openai/whisper-large-v3-turbo hi: 64/500 RTF 8.701
-openai/whisper-large-v3-turbo hi: 72/500 RTF 8.721
-openai/whisper-large-v3-turbo hi: 80/500 RTF 8.692
-openai/whisper-large-v3-turbo hi: 88/500 RTF 8.820
-openai/whisper-large-v3-turbo hi: 96/500 RTF 8.559
-openai/whisper-large-v3-turbo hi: 104/500 RTF 8.594
-openai/whisper-large-v3-turbo hi: 112/500 RTF 8.624
-openai/whisper-large-v3-turbo hi: 120/500 RTF 8.701
-openai/whisper-large-v3-turbo hi: 128/500 RTF 8.715
-openai/whisper-large-v3-turbo hi: 136/500 RTF 8.623
-openai/whisper-large-v3-turbo hi: 144/500 RTF 8.681
-openai/whisper-large-v3-turbo hi: 152/500 RTF 8.632
-openai/whisper-large-v3-turbo hi: 160/500 RTF 8.523
-openai/whisper-large-v3-turbo hi: 168/500 RTF 8.636
-openai/whisper-large-v3-turbo hi: 176/500 RTF 8.619
-openai/whisper-large-v3-turbo hi: 184/500 RTF 8.671
-openai/whisper-large-v3-turbo hi: 192/500 RTF 8.617
+openai/whisper-large-v3-turbo hi: 8/500 RTF 2.692
+openai/whisper-large-v3-turbo hi: 16/500 RTF 2.150
+openai/whisper-large-v3-turbo hi: 24/500 RTF 2.126
+openai/whisper-large-v3-turbo hi: 32/500 RTF 1.894
+openai/whisper-large-v3-turbo hi: 40/500 RTF 1.855
+openai/whisper-large-v3-turbo hi: 48/500 RTF 1.702
+openai/whisper-large-v3-turbo hi: 56/500 RTF 1.585
+openai/whisper-large-v3-turbo hi: 64/500 RTF 1.564
+openai/whisper-large-v3-turbo hi: 72/500 RTF 1.679
+openai/whisper-large-v3-turbo hi: 80/500 RTF 1.616
+openai/whisper-large-v3-turbo hi: 88/500 RTF 1.674
+openai/whisper-large-v3-turbo hi: 96/500 RTF 1.665
+openai/whisper-large-v3-turbo hi: 104/500 RTF 1.645
+openai/whisper-large-v3-turbo hi: 112/500 RTF 1.582
+openai/whisper-large-v3-turbo hi: 120/500 RTF 1.582
+openai/whisper-large-v3-turbo hi: 128/500 RTF 1.575
+openai/whisper-large-v3-turbo hi: 136/500 RTF 1.575
+openai/whisper-large-v3-turbo hi: 144/500 RTF 1.591
+openai/whisper-large-v3-turbo hi: 152/500 RTF 1.587
+openai/whisper-large-v3-turbo hi: 160/500 RTF 1.578
+openai/whisper-large-v3-turbo hi: 168/500 RTF 1.674
+openai/whisper-large-v3-turbo hi: 176/500 RTF 1.647
+openai/whisper-large-v3-turbo hi: 184/500 RTF 1.625
+openai/whisper-large-v3-turbo hi: 192/500 RTF 1.600
+openai/whisper-large-v3-turbo hi: 200/500 RTF 1.584
+openai/whisper-large-v3-turbo hi: 208/500 RTF 1.560
+openai/whisper-large-v3-turbo hi: 216/500 RTF 1.547
+openai/whisper-large-v3-turbo hi: 224/500 RTF 1.548
+openai/whisper-large-v3-turbo hi: 232/500 RTF 1.547
+openai/whisper-large-v3-turbo hi: 240/500 RTF 1.583
+openai/whisper-large-v3-turbo hi: 248/500 RTF 1.573
+openai/whisper-large-v3-turbo hi: 256/500 RTF 1.572
+openai/whisper-large-v3-turbo hi: 264/500 RTF 1.567
+openai/whisper-large-v3-turbo hi: 272/500 RTF 1.582
+openai/whisper-large-v3-turbo hi: 280/500 RTF 1.598
+openai/whisper-large-v3-turbo hi: 288/500 RTF 1.617
+openai/whisper-large-v3-turbo hi: 296/500 RTF 1.626
+openai/whisper-large-v3-turbo hi: 304/500 RTF 1.638
+openai/whisper-large-v3-turbo hi: 312/500 RTF 1.652
+openai/whisper-large-v3-turbo hi: 320/500 RTF 1.662
+openai/whisper-large-v3-turbo hi: 328/500 RTF 1.677
+openai/whisper-large-v3-turbo hi: 336/500 RTF 1.686
+openai/whisper-large-v3-turbo hi: 344/500 RTF 1.714
+openai/whisper-large-v3-turbo hi: 352/500 RTF 1.719
+openai/whisper-large-v3-turbo hi: 360/500 RTF 1.733
+openai/whisper-large-v3-turbo hi: 368/500 RTF 1.741
+openai/whisper-large-v3-turbo hi: 376/500 RTF 1.756
+openai/whisper-large-v3-turbo hi: 384/500 RTF 1.750
+openai/whisper-large-v3-turbo hi: 392/500 RTF 1.764
+openai/whisper-large-v3-turbo hi: 400/500 RTF 1.779
+openai/whisper-large-v3-turbo hi: 408/500 RTF 1.786
+openai/whisper-large-v3-turbo hi: 416/500 RTF 1.797
+openai/whisper-large-v3-turbo hi: 424/500 RTF 1.801
+openai/whisper-large-v3-turbo hi: 432/500 RTF 1.810
+openai/whisper-large-v3-turbo hi: 440/500 RTF 1.823
+openai/whisper-large-v3-turbo hi: 448/500 RTF 1.829
+openai/whisper-large-v3-turbo hi: 456/500 RTF 1.830
+openai/whisper-large-v3-turbo hi: 464/500 RTF 1.841
+openai/whisper-large-v3-turbo hi: 472/500 RTF 1.840
+openai/whisper-large-v3-turbo hi: 480/500 RTF 1.850
+openai/whisper-large-v3-turbo hi: 488/500 RTF 1.855
+openai/whisper-large-v3-turbo hi: 496/500 RTF 1.861
+openai/whisper-large-v3-turbo hi: 500/500 RTF 1.862
+openai/whisper-large-v3-turbo en: 8/250 RTF 1.781
+openai/whisper-large-v3-turbo en: 16/250 RTF 1.384
+openai/whisper-large-v3-turbo en: 24/250 RTF 1.423
+openai/whisper-large-v3-turbo en: 32/250 RTF 1.379
+openai/whisper-large-v3-turbo en: 40/250 RTF 1.419
+openai/whisper-large-v3-turbo en: 48/250 RTF 1.475
+openai/whisper-large-v3-turbo en: 56/250 RTF 1.538
+openai/whisper-large-v3-turbo en: 64/250 RTF 1.467
+openai/whisper-large-v3-turbo en: 72/250 RTF 1.474
+openai/whisper-large-v3-turbo en: 80/250 RTF 1.490
+openai/whisper-large-v3-turbo en: 88/250 RTF 1.480
+openai/whisper-large-v3-turbo en: 96/250 RTF 1.489
+openai/whisper-large-v3-turbo en: 104/250 RTF 1.483
+openai/whisper-large-v3-turbo en: 112/250 RTF 1.473
+openai/whisper-large-v3-turbo en: 120/250 RTF 1.472
+openai/whisper-large-v3-turbo en: 128/250 RTF 1.477
+openai/whisper-large-v3-turbo en: 136/250 RTF 1.453
+openai/whisper-large-v3-turbo en: 144/250 RTF 1.424
+openai/whisper-large-v3-turbo en: 152/250 RTF 1.416
+openai/whisper-large-v3-turbo en: 160/250 RTF 1.424
+openai/whisper-large-v3-turbo en: 168/250 RTF 1.432
+openai/whisper-large-v3-turbo en: 176/250 RTF 1.443
+openai/whisper-large-v3-turbo en: 184/250 RTF 1.446
+openai/whisper-large-v3-turbo en: 192/250 RTF 1.453
+openai/whisper-large-v3-turbo en: 200/250 RTF 1.449
+openai/whisper-large-v3-turbo en: 208/250 RTF 1.444
+openai/whisper-large-v3-turbo en: 216/250 RTF 1.447
+openai/whisper-large-v3-turbo en: 224/250 RTF 1.442
+openai/whisper-large-v3-turbo en: 232/250 RTF 1.442
+openai/whisper-large-v3-turbo en: 240/250 RTF 1.433
+openai/whisper-large-v3-turbo en: 248/250 RTF 1.442
+openai/whisper-large-v3-turbo en: 250/250 RTF 1.442
++ cp hyps/_timing.json out/whisper-large-v3-turbo-ceiling/timing.json
++ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi,en --engine transformers --model openai/whisper-large-v3-turbo --device github-ubuntu-cpu --out out/whisper-large-v3-turbo-ceiling/results.jsonl --summary out/whisper-large-v3-turbo-ceiling/summary.json --missing skip
+Speech eval: engine=transformers model=openai/whisper-large-v3-turbo device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
+group                                        clips  words     WER  WERstr  CERstr urdu miss
+lang=en                                        250   5294    5.2%    5.2%    3.0%    0    0
+lang=en/condition=clean                        163   3468    5.1%    5.1%    2.9%    0    0
+lang=en/condition=fast                          87   1826    5.4%    5.4%    3.2%    0    0
+lang=en/condition=reencode                      87   1826    5.4%    5.4%    3.2%    0    0
+lang=en/source=fleurs_en                       250   5294    5.2%    5.2%    3.0%    0    0
+lang=hi                                        500   9159   32.4%   37.8%   23.4%    0    0
+lang=hi/condition=clean                        332   6035   31.8%   37.2%   22.8%    0    0
+lang=hi/condition=fast                         168   3124   33.7%   38.8%   24.5%    0    0
+lang=hi/condition=reencode                     168   3124   33.7%   38.8%   24.5%    0    0
+lang=hi/source=fleurs_hi                       250   5918   24.5%   30.6%   12.5%    0    0
+lang=hi/source=mucs                            250   3241   46.8%   50.8%   43.0%    0    0
+variety=english                                250   5294    5.2%    5.2%    3.0%    0    0
+variety=hindi                                  250   5918   24.5%   30.6%   12.5%    0    0
+variety=hinglish                               250   3241   46.8%   50.8%   43.0%    0    0
+WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. urdu = clips whose output is >20% Arabic script.
