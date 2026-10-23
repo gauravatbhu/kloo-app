@@ -1,0 +1,137 @@
+{
+  "meta": {
+    "engine": "transformers",
+    "model": "openai/whisper-small",
+    "device": "github-ubuntu-cpu",
+    "tier": null
+  },
+  "normaliser": "kloo-speech-norm-1",
+  "groups": {
+    "lang=en": {
+      "clips": 457,
+      "ref_words": 9806,
+      "wer": 0.0936,
+      "wer_strict": 0.0936,
+      "cer_strict": 0.0535,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=clean": {
+      "clips": 300,
+      "ref_words": 6482,
+      "wer": 0.0884,
+      "wer_strict": 0.0884,
+      "cer_strict": 0.0487,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=fast": {
+      "clips": 157,
+      "ref_words": 3324,
+      "wer": 0.1038,
+      "wer_strict": 0.1038,
+      "cer_strict": 0.0629,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=reencode": {
+      "clips": 157,
+      "ref_words": 3324,
+      "wer": 0.1038,
+      "wer_strict": 0.1038,
+      "cer_strict": 0.0629,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/source=fleurs_en": {
+      "clips": 457,
+      "ref_words": 9806,
+      "wer": 0.0936,
+      "wer_strict": 0.0936,
+      "cer_strict": 0.0535,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi": {
+      "clips": 824,
+      "ref_words": 17910,
+      "wer": 0.5341,
+      "wer_strict": 0.6242,
+      "cer_strict": 0.3339,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=clean": {
+      "clips": 547,
+      "ref_words": 11762,
+      "wer": 0.536,
+      "wer_strict": 0.6281,
+      "cer_strict": 0.3351,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=fast": {
+      "clips": 277,
+      "ref_words": 6148,
+      "wer": 0.5304,
+      "wer_strict": 0.6168,
+      "cer_strict": 0.3315,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=reencode": {
+      "clips": 277,
+      "ref_words": 6148,
+      "wer": 0.5304,
+      "wer_strict": 0.6168,
+      "cer_strict": 0.3315,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=fleurs_hi": {
+      "clips": 629,
+      "ref_words": 15409,
+      "wer": 0.4943,
+      "wer_strict": 0.5904,
+      "cer_strict": 0.2794,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=mucs": {
+      "clips": 195,
+      "ref_words": 2501,
+      "wer": 0.7793,
+      "wer_strict": 0.8329,
+      "cer_strict": 0.662,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=english": {
+      "clips": 457,
+      "ref_words": 9806,
+      "wer": 0.0936,
+      "wer_strict": 0.0936,
+      "cer_strict": 0.0535,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hindi": {
+      "clips": 629,
+      "ref_words": 15409,
+      "wer": 0.4943,
+      "wer_strict": 0.5904,
+      "cer_strict": 0.2794,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hinglish": {
+      "clips": 195,
+      "ref_words": 2501,
+      "wer": 0.7793,
+      "wer_strict": 0.8329,
+      "cer_strict": 0.662,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    }
+  }
+}

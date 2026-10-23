@@ -1,0 +1,18 @@
+{
+  "model": "vasista22/whisper-hindi-small",
+  "cpu_count": 4,
+  "timing": {
+    "hi": {
+      "clips": 1086,
+      "planned": 1086,
+      "audio_s": 9718.2,
+      "compute_s": 6896.0,
+      "rtf": 0.71
+    }
+  },
+  "loop_retries": {
+    "looped": 42,
+    "fixed": 23
+  },
+  "decoding": "greedy+loop-fallback"
+}
