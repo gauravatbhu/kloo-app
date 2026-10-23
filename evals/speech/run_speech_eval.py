@@ -44,7 +44,8 @@ if HERE not in sys.path:
     sys.path.insert(0, HERE)
 
 from speech_normalise import (  # noqa: E402
-    NORMALISER_VERSION, hinglish_normalise, load_lexicon, script_profile, strict_normalise,
+    NORMALISER_VERSION, PHONETIC_VERSION, hinglish_normalise, load_lexicon, phonetic_normalise,
+    script_profile, strict_normalise,
 )
 
 LANGS = ("en", "hi")
@@ -214,6 +215,7 @@ def evaluate(clips, golden_dir, hyp_dir, lexicon, translit, missing="error"):
             continue
         sc = score_pair(ref, hyp)
         st = score_pair(strict_ref, strict_hyp)
+        ph = score_pair(phonetic_normalise(ref), phonetic_normalise(hyp)) if lang == "hi" else sc
         prof = script_profile(raw_hyp)
         rows.append({
             "suite": "speech", "id": cid, "lang": lang,
@@ -225,7 +227,7 @@ def evaluate(clips, golden_dir, hyp_dir, lexicon, translit, missing="error"):
             "normaliser": NORMALISER_VERSION,
             "missing_hypothesis": hyp_path is None,
             "hyp_script": {k: round(v, 3) for k, v in prof.items()},
-            "scores": {"official": sc, "strict": st},
+            "scores": {"official": sc, "strict": st, "phonetic": ph},
             "raw_reference": raw_ref.strip(), "raw_hypothesis": raw_hyp,
         })
     return rows, problems
@@ -263,6 +265,7 @@ def summarise(rows):
             "ref_words": sum(r["scores"]["official"]["ref_words"] for r in rs),
             "wer": _rate(rs, "official", "word_errors", "ref_words"),
             "wer_strict": _rate(rs, "strict", "word_errors", "ref_words"),
+            "wer_phonetic": _rate(rs, "phonetic", "word_errors", "ref_words"),
             "cer_strict": _rate(rs, "strict", "char_errors", "ref_chars"),
             "wrong_script_clips": sum(1 for r in rs if r["hyp_script"]["arab"] > 0.2),
             "missing_hypotheses": sum(1 for r in rs if r["missing_hypothesis"]),
@@ -273,15 +276,15 @@ def summarise(rows):
 def format_summary(summary, meta):
     lines = [f"Speech eval: engine={meta.get('engine')} model={meta.get('model')} "
              f"device={meta.get('device')} tier={meta.get('tier')} normaliser={NORMALISER_VERSION}",
-             f"{'group':44} {'clips':>5} {'words':>6} {'WER':>7} {'WERstr':>7} {'CERstr':>7}"
+             f"{'group':44} {'clips':>5} {'words':>6} {'WER':>7} {'WERstr':>7} {'WERph':>7} {'CERstr':>7}"
              f" {'urdu':>4} {'miss':>4}"]
     for key, s in summary.items():
         f = lambda v: "   —   " if v is None else f"{100 * v:6.1f}%"  # noqa: E731
         lines.append(f"{key:44} {s['clips']:5d} {s['ref_words']:6d} {f(s['wer'])} "
-                     f"{f(s['wer_strict'])} {f(s['cer_strict'])}"
+                     f"{f(s['wer_strict'])} {f(s.get('wer_phonetic'))} {f(s['cer_strict'])}"
                      f" {s['wrong_script_clips']:4d} {s['missing_hypotheses']:4d}")
     lines.append("WER = official (en: strict; hi: script-agnostic Hinglish skeleton). "
-                 "WERstr/CERstr = script-preserving. urdu = clips whose output is >20% Arabic script.")
+                 "WERstr/CERstr = script-preserving. WERph = diagnostic consonant key (hi only, lenient). urdu = clips whose output is >20% Arabic script.")
     return "\n".join(lines)
 
 
@@ -334,7 +337,8 @@ def main(argv=None):
     print(format_summary(summary, meta))
     if a.summary:
         with open(a.summary, "w", encoding="utf-8") as f:
-            json.dump({"meta": meta, "normaliser": NORMALISER_VERSION, "groups": summary},
+            json.dump({"meta": meta, "normaliser": NORMALISER_VERSION, "phonetic": PHONETIC_VERSION,
+                       "groups": summary},
                       f, indent=2, ensure_ascii=False)
     if problems:
         print("\nProblems:", file=sys.stderr)

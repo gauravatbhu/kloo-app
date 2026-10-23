@@ -4,13 +4,17 @@ prepare_public_set.py reads with --local NAME=DIR.
 
   fleurs  DIR_WITH_TSV_AND_AUDIO  OUT   (FLEURS <split>.tsv + extracted audio/)
   mucs    EXTRACTED_TAR_DIR       OUT   (MUCS 2021 Hindi-English test)
+  parquet PARQUET_DIR             OUT   (Hugging Face parquet shards, e.g. IndicVoices,
+                                         Lahaja, Svarah; audio stored as bytes)
 
 Both writers produce: text, wav.scp (absolute paths), optional segments,
 utt2spk. The MUCS layout is not documented on OpenSLR, so the converter
 searches the tree for the Kaldi files and matches recordings to audio by
 file name. It prints what it found so a CI log shows any surprise.
 """
+import glob
 import os
+import re
 import sys
 
 
@@ -114,7 +118,57 @@ def mucs(src, out):
     write_folder(out, texts, wavs, segments or None, spk or None)
 
 
+AUDIO_COLS = ("audio_filepath", "audio")
+TEXT_COLS = ("text", "transcription", "sentence")
+SPK_COLS = ("speaker_id", "sp_id", "speaker")
+SAFE = re.compile(r"[^A-Za-z0-9_.-]+")
+
+
+def parquet(src, out):
+    """Write each row's audio bytes to OUT/wav/ and the Kaldi files. Rows stream
+    batch by batch, so memory stays small even for multi-GB shards."""
+    import pyarrow.parquet as pq
+
+    files = sorted(glob.glob(os.path.join(src, "**", "*.parquet"), recursive=True))
+    if not files:
+        raise SystemExit(f"no .parquet files under {src}")
+    os.makedirs(os.path.join(out, "wav"), exist_ok=True)
+    texts, wavs, spk = [], {}, {}
+    for fi, path in enumerate(files):
+        pf = pq.ParquetFile(path)
+        names = pf.schema_arrow.names
+        acol = next((c for c in AUDIO_COLS if c in names), None)
+        tcol = next((c for c in TEXT_COLS if c in names), None)
+        scol = next((c for c in SPK_COLS if c in names), None)
+        if not acol or not tcol:
+            raise SystemExit(f"{path}: need audio and text columns, have {names}")
+        if fi == 0:
+            print(f"parquet columns: audio={acol} text={tcol} speaker={scol}; all={names}")
+        row = 0
+        for batch in pf.iter_batches(batch_size=64, columns=[c for c in (acol, tcol, scol) if c]):
+            for rec in batch.to_pylist():
+                row += 1
+                audio = rec[acol] or {}
+                data = audio.get("bytes")
+                text = " ".join(str(rec[tcol] or "").split())
+                if not data or not text:
+                    continue
+                stem = os.path.splitext(os.path.basename(audio.get("path") or ""))[0]
+                utt = SAFE.sub("_", f"f{fi}r{row}_{stem}")[:120]
+                ext = os.path.splitext(audio.get("path") or "")[1].lower() or ".wav"
+                wav_path = os.path.join(out, "wav", utt + ext)
+                with open(wav_path, "wb") as f:
+                    f.write(data)
+                texts.append((utt, text))
+                wavs[utt] = wav_path
+                if scol and rec.get(scol):
+                    spk[utt] = SAFE.sub("_", str(rec[scol]))
+    print(f"sample text: {texts[:2]}")
+    write_folder(out, texts, wavs, None, spk or None)
+
+
 if __name__ == "__main__":
-    if len(sys.argv) != 4 or sys.argv[1] not in ("fleurs", "mucs"):
+    modes = {"fleurs": fleurs, "mucs": mucs, "parquet": parquet}
+    if len(sys.argv) != 4 or sys.argv[1] not in modes:
         raise SystemExit(__doc__)
-    {"fleurs": fleurs, "mucs": mucs}[sys.argv[1]](sys.argv[2], sys.argv[3])
+    modes[sys.argv[1]](sys.argv[2], sys.argv[3])

@@ -259,5 +259,21 @@ class EndToEndTest(unittest.TestCase):
             self.assertIn("variety", err)
 
 
+
+class PhoneticKeyTest(unittest.TestCase):
+    def test_cross_script_loanwords_match(self):
+        from speech_normalise import hinglish_normalise, phonetic_normalise
+        lex = {}
+        for latin, deva in [("file dialog box", "फाइल डायलॉग बॉक्स"),
+                            ("operating system", "ऑपरेटिंग सिस्टम"),
+                            ("workspace", "वर्कस्पेस")]:
+            self.assertEqual(phonetic_normalise(hinglish_normalise(latin, lex)),
+                             phonetic_normalise(hinglish_normalise(deva, lex)), latin)
+
+    def test_distinct_words_stay_distinct(self):
+        from speech_normalise import phonetic_key
+        self.assertNotEqual(phonetic_key("kar"), phonetic_key("bar"))
+        self.assertNotEqual(phonetic_key("file"), phonetic_key("fine"))
+
 if __name__ == "__main__":
     unittest.main()
