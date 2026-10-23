@@ -1,0 +1,103 @@
++ pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
++ pip install -q transformers==4.46.3 numpy==2.1.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
++ '[' hf = conformer ']'
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model openai/whisper-small --langs hi,en --limit 200 --max-minutes 270
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50359]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+openai/whisper-small hi: 8/400 RTF 2.535
+openai/whisper-small hi: 16/400 RTF 1.566
+openai/whisper-small hi: 24/400 RTF 1.329
+openai/whisper-small hi: 32/400 RTF 1.366
+openai/whisper-small hi: 40/400 RTF 1.316
+openai/whisper-small hi: 48/400 RTF 1.185
+openai/whisper-small hi: 56/400 RTF 1.122
+openai/whisper-small hi: 64/400 RTF 1.221
+openai/whisper-small hi: 72/400 RTF 1.208
+openai/whisper-small hi: 80/400 RTF 1.111
+openai/whisper-small hi: 88/400 RTF 1.085
+openai/whisper-small hi: 96/400 RTF 1.081
+openai/whisper-small hi: 104/400 RTF 1.036
+openai/whisper-small hi: 112/400 RTF 1.043
+openai/whisper-small hi: 120/400 RTF 1.203
+openai/whisper-small hi: 128/400 RTF 1.163
+openai/whisper-small hi: 136/400 RTF 1.129
+openai/whisper-small hi: 144/400 RTF 1.109
+openai/whisper-small hi: 152/400 RTF 1.120
+openai/whisper-small hi: 160/400 RTF 1.087
+openai/whisper-small hi: 168/400 RTF 1.130
+openai/whisper-small hi: 176/400 RTF 1.138
+openai/whisper-small hi: 184/400 RTF 1.104
+openai/whisper-small hi: 192/400 RTF 1.067
+openai/whisper-small hi: 200/400 RTF 1.070
+openai/whisper-small hi: 208/400 RTF 1.092
+openai/whisper-small hi: 216/400 RTF 1.190
+openai/whisper-small hi: 224/400 RTF 1.216
+openai/whisper-small hi: 232/400 RTF 1.292
+openai/whisper-small hi: 240/400 RTF 1.363
+openai/whisper-small hi: 248/400 RTF 1.407
+openai/whisper-small hi: 256/400 RTF 1.415
+openai/whisper-small hi: 264/400 RTF 1.598
+openai/whisper-small hi: 272/400 RTF 1.652
+openai/whisper-small hi: 280/400 RTF 1.738
+openai/whisper-small hi: 288/400 RTF 1.761
+openai/whisper-small hi: 296/400 RTF 1.819
+openai/whisper-small hi: 304/400 RTF 1.889
+openai/whisper-small hi: 312/400 RTF 1.895
+openai/whisper-small hi: 320/400 RTF 1.905
+openai/whisper-small hi: 328/400 RTF 2.002
+openai/whisper-small hi: 336/400 RTF 2.008
+openai/whisper-small hi: 344/400 RTF 2.002
+openai/whisper-small hi: 352/400 RTF 2.037
+openai/whisper-small hi: 360/400 RTF 2.040
+openai/whisper-small hi: 368/400 RTF 2.038
+openai/whisper-small hi: 376/400 RTF 2.072
+openai/whisper-small hi: 384/400 RTF 2.091
+openai/whisper-small hi: 392/400 RTF 2.132
+openai/whisper-small hi: 400/400 RTF 2.163
+openai/whisper-small en: 8/200 RTF 0.415
+openai/whisper-small en: 16/200 RTF 0.340
+openai/whisper-small en: 24/200 RTF 0.342
+openai/whisper-small en: 32/200 RTF 0.330
+openai/whisper-small en: 40/200 RTF 0.337
+openai/whisper-small en: 48/200 RTF 0.354
+openai/whisper-small en: 56/200 RTF 0.367
+openai/whisper-small en: 64/200 RTF 0.350
+openai/whisper-small en: 72/200 RTF 0.350
+openai/whisper-small en: 80/200 RTF 0.352
+openai/whisper-small en: 88/200 RTF 0.349
+openai/whisper-small en: 96/200 RTF 0.350
+openai/whisper-small en: 104/200 RTF 0.348
+openai/whisper-small en: 112/200 RTF 0.345
+openai/whisper-small en: 120/200 RTF 0.345
+openai/whisper-small en: 128/200 RTF 0.346
+openai/whisper-small en: 136/200 RTF 0.340
+openai/whisper-small en: 144/200 RTF 0.333
+openai/whisper-small en: 152/200 RTF 0.332
+openai/whisper-small en: 160/200 RTF 0.333
+openai/whisper-small en: 168/200 RTF 0.335
+openai/whisper-small en: 176/200 RTF 0.336
+openai/whisper-small en: 184/200 RTF 0.337
+openai/whisper-small en: 192/200 RTF 0.338
+openai/whisper-small en: 200/200 RTF 0.337
++ cp hyps/_timing.json out/whisper-small/timing.json
++ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi,en --engine transformers --model openai/whisper-small --device github-ubuntu-cpu --out out/whisper-small/results.jsonl --summary out/whisper-small/summary.json --missing skip
+Speech eval: engine=transformers model=openai/whisper-small device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
+group                                        clips  words     WER  WERstr   WERph  CERstr urdu miss
+lang=en                                        200   4160    7.3%    7.3%    7.3%    3.9%    0    0
+lang=en/condition=clean                        129   2687    7.1%    7.1%    7.1%    3.8%    0    0
+lang=en/condition=fast                          71   1473    7.6%    7.6%    7.6%    4.2%    0    0
+lang=en/condition=reencode                      71   1473    7.6%    7.6%    7.6%    4.2%    0    0
+lang=en/source=fleurs_en                       200   4160    7.3%    7.3%    7.3%    3.9%    0    0
+lang=hi                                        400   7263   60.5%   68.2%   51.5%   41.9%    0    0
+lang=hi/condition=clean                        266   4803   61.3%   69.2%   52.4%   42.5%    0    0
+lang=hi/condition=fast                         134   2460   58.9%   66.3%   49.9%   40.6%    0    0
+lang=hi/condition=reencode                     134   2460   58.9%   66.3%   49.9%   40.6%    0    0
+lang=hi/source=fleurs_hi                       200   4712   49.9%   59.2%   40.3%   28.3%    0    0
+lang=hi/source=mucs                            200   2551   80.1%   85.1%   72.2%   66.4%    0    0
+variety=english                                200   4160    7.3%    7.3%    7.3%    3.9%    0    0
+variety=hindi                                  200   4712   49.9%   59.2%   40.3%   28.3%    0    0
+variety=hinglish                               200   2551   80.1%   85.1%   72.2%   66.4%    0    0
+WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. WERph = diagnostic consonant key (hi only, lenient). urdu = clips whose output is >20% Arabic script.

@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "engine": "transformers",
+    "model": "openai/whisper-small",
+    "device": "github-ubuntu-cpu",
+    "tier": null
+  },
+  "normaliser": "kloo-speech-norm-1",
+  "phonetic": "kloo-speech-phon-1",
+  "groups": {
+    "lang=en": {
+      "clips": 200,
+      "ref_words": 4160,
+      "wer": 0.0728,
+      "wer_strict": 0.0728,
+      "wer_phonetic": 0.0728,
+      "cer_strict": 0.0393,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=clean": {
+      "clips": 129,
+      "ref_words": 2687,
+      "wer": 0.0711,
+      "wer_strict": 0.0711,
+      "wer_phonetic": 0.0711,
+      "cer_strict": 0.0378,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=fast": {
+      "clips": 71,
+      "ref_words": 1473,
+      "wer": 0.076,
+      "wer_strict": 0.076,
+      "wer_phonetic": 0.076,
+      "cer_strict": 0.0421,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/condition=reencode": {
+      "clips": 71,
+      "ref_words": 1473,
+      "wer": 0.076,
+      "wer_strict": 0.076,
+      "wer_phonetic": 0.076,
+      "cer_strict": 0.0421,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=en/source=fleurs_en": {
+      "clips": 200,
+      "ref_words": 4160,
+      "wer": 0.0728,
+      "wer_strict": 0.0728,
+      "wer_phonetic": 0.0728,
+      "cer_strict": 0.0393,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi": {
+      "clips": 400,
+      "ref_words": 7263,
+      "wer": 0.6047,
+      "wer_strict": 0.6825,
+      "wer_phonetic": 0.5155,
+      "cer_strict": 0.4185,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=clean": {
+      "clips": 266,
+      "ref_words": 4803,
+      "wer": 0.6125,
+      "wer_strict": 0.6923,
+      "wer_phonetic": 0.524,
+      "cer_strict": 0.4249,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=fast": {
+      "clips": 134,
+      "ref_words": 2460,
+      "wer": 0.5894,
+      "wer_strict": 0.6634,
+      "wer_phonetic": 0.4988,
+      "cer_strict": 0.4057,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/condition=reencode": {
+      "clips": 134,
+      "ref_words": 2460,
+      "wer": 0.5894,
+      "wer_strict": 0.6634,
+      "wer_phonetic": 0.4988,
+      "cer_strict": 0.4057,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=fleurs_hi": {
+      "clips": 200,
+      "ref_words": 4712,
+      "wer": 0.4985,
+      "wer_strict": 0.5915,
+      "wer_phonetic": 0.4034,
+      "cer_strict": 0.2826,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "lang=hi/source=mucs": {
+      "clips": 200,
+      "ref_words": 2551,
+      "wer": 0.8009,
+      "wer_strict": 0.8506,
+      "wer_phonetic": 0.7225,
+      "cer_strict": 0.6637,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=english": {
+      "clips": 200,
+      "ref_words": 4160,
+      "wer": 0.0728,
+      "wer_strict": 0.0728,
+      "wer_phonetic": 0.0728,
+      "cer_strict": 0.0393,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hindi": {
+      "clips": 200,
+      "ref_words": 4712,
+      "wer": 0.4985,
+      "wer_strict": 0.5915,
+      "wer_phonetic": 0.4034,
+      "cer_strict": 0.2826,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    },
+    "variety=hinglish": {
+      "clips": 200,
+      "ref_words": 2551,
+      "wer": 0.8009,
+      "wer_strict": 0.8506,
+      "wer_phonetic": 0.7225,
+      "cer_strict": 0.6637,
+      "wrong_script_clips": 0,
+      "missing_hypotheses": 0
+    }
+  }
+}
