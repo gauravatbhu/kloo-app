@@ -1,0 +1,250 @@
+Setting up libx265-199:amd64 (3.5-2build1) ...
+Setting up libsndio7.0:amd64 (1.9.0-0.3build3) ...
+Setting up libbdplus0:amd64 (0.2.0-3build1) ...
+Setting up libvidstab1.1:amd64 (1.1.0-2build1) ...
+Setting up libvpx9:amd64 (1.14.0-1ubuntu2.3) ...
+Setting up libsrt1.5-gnutls:amd64 (1.5.3-1build2) ...
+Setting up libflite1:amd64 (2.2-6build3) ...
+Setting up libdav1d7:amd64 (1.4.1-1build1) ...
+Setting up libva-drm2:amd64 (2.20.0-2ubuntu0.2) ...
+Setting up ocl-icd-libopencl1:amd64 (2.3.2-1build1) ...
+Setting up libasyncns0:amd64 (0.8-6build4) ...
+Setting up libvdpau1:amd64 (1.5-2build1) ...
+Setting up libbs2b0:amd64 (3.1.0+dfsg-7build1) ...
+Setting up libtheora0:amd64 (1.1.1+dfsg.1-16.1build3) ...
+Setting up libdecor-0-0:amd64 (0.2.2-1build2) ...
+Setting up libzimg2:amd64 (3.0.5+ds1-1build1) ...
+Setting up libopenal-data (1:1.23.1-4build1) ...
+Setting up libflac12t64:amd64 (1.4.3+ds-2.1ubuntu2) ...
+Setting up mesa-va-drivers:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+Setting up libbluray2:amd64 (1:1.3.4-1build1) ...
+Setting up libsamplerate0:amd64 (0.2.2-4build1) ...
+Setting up libva-x11-2:amd64 (2.20.0-2ubuntu0.2) ...
+Setting up libdecor-0-plugin-1-gtk:amd64 (0.2.2-1build2) ...
+Setting up libopenmpt0t64:amd64 (0.7.3-1.1build3) ...
+Setting up libzvbi-common (0.2.42-2) ...
+Setting up libmp3lame0:amd64 (3.100-6build1) ...
+Setting up i965-va-driver:amd64 (2.4.1+dfsg1-1ubuntu0.2) ...
+Setting up libvorbisenc2:amd64 (1.3.7-1build3) ...
+Setting up libiec61883-0:amd64 (1.2.0-6build1) ...
+Setting up libserd-0-0:amd64 (0.32.2-1) ...
+Setting up libavc1394-0:amd64 (0.5.4-5build3) ...
+Setting up mesa-vdpau-drivers:amd64 (25.2.8-0ubuntu0.24.04.4) ...
+Setting up liblapack3:amd64 (3.12.0-3build1.1) ...
+update-alternatives: using /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3 to provide /usr/lib/x86_64-linux-gnu/liblapack.so.3 (liblapack.so.3-x86_64-linux-gnu) in auto mode
+Setting up libzvbi0t64:amd64 (0.2.42-2) ...
+Setting up libavutil58:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up libopenal1:amd64 (1:1.23.1-4build1) ...
+Setting up libass9:amd64 (1:0.17.1-2build1) ...
+Setting up libswresample4:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up va-driver-all:amd64 (2.20.0-2ubuntu0.2) ...
+Setting up libavcodec60:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up librubberband2:amd64 (3.3.0+dfsg-2build1) ...
+Setting up libjack-jackd2-0:amd64 (1.9.21~dfsg-3ubuntu3) ...
+Setting up vdpau-driver-all:amd64 (1.5-2build1) ...
+Setting up libsord-0-0:amd64 (0.16.16-2build1) ...
+Setting up libpostproc57:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up libsratom-0-0:amd64 (0.6.16-1build1) ...
+Setting up libsndfile1:amd64 (1.2.2-1ubuntu5.24.04.1) ...
+Setting up liblilv-0-0:amd64 (0.24.22-1build1) ...
+Setting up libswscale7:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up libpulse0:amd64 (1:16.1+dfsg1-2ubuntu10.1) ...
+Setting up libavformat60:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up libsphinxbase3t64:amd64 (0.8+5prealpha+1-17build2) ...
+Setting up libsdl2-2.0-0:amd64 (2.30.0+dfsg-1ubuntu3.1) ...
+Setting up libpocketsphinx3:amd64 (0.8.0+real5prealpha+1-15ubuntu5) ...
+Setting up libavfilter9:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up libavdevice60:amd64 (7:6.1.1-3ubuntu5) ...
+Setting up ffmpeg (7:6.1.1-3ubuntu5) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Not building database; man-db/auto-update is not 'true'.
+Processing triggers for libgdk-pixbuf-2.0-0:amd64 (2.42.10+dfsg-3ubuntu3.3) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
++ pip install -q numpy==2.1.3 pyarrow==18.1.0
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
++ cat logs/gated.log
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+Fetching 1 files:   0%|          | 0/1 [00:00<?, ?it/s]Fetching 1 files: 100%|██████████| 1/1 [00:00<00:00,  8.68it/s]Fetching 1 files: 100%|██████████| 1/1 [00:00<00:00,  8.66it/s]
+indicvoices: SKIPPED (GatedRepoError: 403 Client Error. (Request ID: Root=1-6adaf7b0-68a81c0f01da02f30aaaeed6;fb3a4e8c-40f3-4cc4-996f-8f6f89f343ed)
+
+Cannot access gated repo for url https://huggingface.co/datasets/ai4bharat/IndicVoices/re)
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  9.00it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:00<00:00,  8.98it/s]
+lahaja: SKIPPED (GatedRepoError: 403 Client Error. (Request ID: Root=1-6adaf7b1-7c77fb8d10cdc4753c047731;3f5e5795-3862-41f4-9788-1301e4083eaf)
+
+Cannot access gated repo for url https://huggingface.co/datasets/ai4bharat/Lahaja/resolve)
+Fetching 3 files:   0%|          | 0/3 [00:00<?, ?it/s]Fetching 3 files:  67%|██████▋   | 2/3 [00:00<00:00, 18.89it/s]Fetching 3 files:  67%|██████▋   | 2/3 [00:00<00:00, 18.83it/s]
+svarah: SKIPPED (GatedRepoError: 403 Client Error. (Request ID: Root=1-6adaf7b1-11df8537379a5b792317e24d;51377386-8750-4687-929c-da869f6bac95)
+
+Cannot access gated repo for url https://huggingface.co/datasets/ai4bharat/Svarah/resolve)
++ python3 -m unittest discover -s evals/speech -v
+test_build_is_deterministic_and_valid (test_prepare_public_set.BuildTest.test_build_is_deterministic_and_valid) ... ok
+test_hinglish_relabel (test_prepare_public_set.MixTest.test_hinglish_relabel) ... ok
+test_snr_is_exact (test_prepare_public_set.MixTest.test_snr_is_exact) ... ok
+test_tempo_and_reencode (test_prepare_public_set.MixTest.test_tempo_and_reencode) ... ok
+test_audio_rules (test_speech_eval.AudioCheckTest.test_audio_rules) ... ok
+test_bad_manifest (test_speech_eval.EndToEndTest.test_bad_manifest) ... ok
+test_check_audio_flags_missing_audio (test_speech_eval.EndToEndTest.test_check_audio_flags_missing_audio) ... ok
+test_example_runs_and_matches_run_evals (test_speech_eval.EndToEndTest.test_example_runs_and_matches_run_evals) ... ok
+test_missing_hypothesis (test_speech_eval.EndToEndTest.test_missing_hypothesis) ... ok
+test_lexicon_maps_english_loanwords (test_speech_eval.HinglishNormaliseTest.test_lexicon_maps_english_loanwords) ... ok
+test_output_is_run_evals_stable (test_speech_eval.HinglishNormaliseTest.test_output_is_run_evals_stable) ... ok
+test_script_agnostic_match (test_speech_eval.HinglishNormaliseTest.test_script_agnostic_match) ... ok
+test_translit_hook_is_used (test_speech_eval.HinglishNormaliseTest.test_translit_hook_is_used) ... ok
+test_without_lexicon_loanword_mismatches (test_speech_eval.HinglishNormaliseTest.test_without_lexicon_loanword_mismatches) ... ok
+test_plain_numbers_in_speech_survive_inline (test_speech_eval.HypothesisCleaningTest.test_plain_numbers_in_speech_survive_inline) ... ok
+test_srt_and_vtt (test_speech_eval.HypothesisCleaningTest.test_srt_and_vtt) ... ok
+test_whisper_cpp_timestamps (test_speech_eval.HypothesisCleaningTest.test_whisper_cpp_timestamps) ... ok
+test_cross_script_loanwords_match (test_speech_eval.PhoneticKeyTest.test_cross_script_loanwords_match) ... ok
+test_distinct_words_stay_distinct (test_speech_eval.PhoneticKeyTest.test_distinct_words_stay_distinct) ... ok
+test_common_words (test_speech_eval.RomaniserTest.test_common_words) ... ok
+test_passes_through_latin (test_speech_eval.RomaniserTest.test_passes_through_latin) ... ok
+test_edit_ops (test_speech_eval.ScoringTest.test_edit_ops) ... ok
+test_profiles (test_speech_eval.ScriptProfileTest.test_profiles) ... ok
+test_distinct_words_stay_distinct (test_speech_eval.SkeletonTest.test_distinct_words_stay_distinct) ... ok
+test_non_ascii_passthrough (test_speech_eval.SkeletonTest.test_non_ascii_passthrough) ... ok
+test_romanisation_variants_collapse (test_speech_eval.SkeletonTest.test_romanisation_variants_collapse) ... ok
+test_apostrophes_join (test_speech_eval.StrictNormaliseTest.test_apostrophes_join) ... ok
+test_bracketed_non_speech_removed (test_speech_eval.StrictNormaliseTest.test_bracketed_non_speech_removed) ... ok
+test_chandrabindu_folds_to_anusvara (test_speech_eval.StrictNormaliseTest.test_chandrabindu_folds_to_anusvara) ... ok
+test_danda_and_devanagari_digits (test_speech_eval.StrictNormaliseTest.test_danda_and_devanagari_digits) ... ok
+test_idempotent_and_stable_under_run_evals (test_speech_eval.StrictNormaliseTest.test_idempotent_and_stable_under_run_evals) ... ok
+test_lowercase_and_punctuation (test_speech_eval.StrictNormaliseTest.test_lowercase_and_punctuation) ... ok
+test_nukta_folded_except_dd_rh (test_speech_eval.StrictNormaliseTest.test_nukta_folded_except_dd_rh) ... ok
+test_numbers_currency_percent (test_speech_eval.StrictNormaliseTest.test_numbers_currency_percent) ... ok
+test_zero_width_chars_do_not_split_words (test_speech_eval.StrictNormaliseTest.test_zero_width_chars_do_not_split_words) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 11.973s
+
+OK
++ mkdir -p dl
++ cd dl
++ for lang in hi_in en_us
++ mkdir -p fleurs_hi_in
++ curl -fsSL -o fleurs_hi_in/test.tsv https://huggingface.co/datasets/google/fleurs/resolve/main/data/hi_in/test.tsv
++ curl -fsSL https://huggingface.co/datasets/google/fleurs/resolve/main/data/hi_in/audio/test.tar.gz
++ tar -xz -C fleurs_hi_in
++ head -c 600 fleurs_hi_in/test.tsv
+1839	7251883826251297781.wav	स्कीइंग मार्ग को एक हाईकिंग (लंबी पैदल यात्रा) मार्ग जैसा ही सोचें।	स्कीइंग मार्ग को एक हाईकिंग लंबी पैदल यात्रा मार्ग जैसा ही सोचें।	स ् क ी इ ं ग | म ा र ् ग | क ो | ए क | ह ा ई क ि ं ग | ल ं ब ी | प ै द ल | य ा त ् र ा | म ा र ् ग | ज ै स ा | ह ी | स ो+ echo
+
++ for lang in hi_in en_us
++ mkdir -p fleurs_en_us
++ curl -fsSL -o fleurs_en_us/test.tsv https://huggingface.co/datasets/google/fleurs/resolve/main/data/en_us/test.tsv
++ curl -fsSL https://huggingface.co/datasets/google/fleurs/resolve/main/data/en_us/audio/test.tar.gz
++ tar -xz -C fleurs_en_us
++ head -c 600 fleurs_en_us/test.tsv
+1980	12741024238657315067.wav	Unfortunately, studying traffic flow is difficult because driver behavior cannot be predicted with one-hundred percent certainty.	unfortunately studying traffic flow is difficult because driver behavior cannot be predicted with one-hundred percent certainty	u n f o r t u n a t e l y | s t u d y i n g | t r a f f i c | f l o w | i s | d i f f i c u l t | b e c a u s e | d r i v e r | b e h a v i o r | c a n n o t | b e | p r e d i c t e d | w i t h | o n e - h u n d r e d | p e r c e n t | c e r t a i n t y |	202240	MALE
+1980	9055240296608129734.wav	Unfortunately, + echo
+
++ mkdir -p mucs
++ curl -fsSL https://openslr.trmal.net/resources/104/Hindi-English_test.tar.gz -o mucs.tgz
++ tar -xzf mucs.tgz -C mucs
++ rm mucs.tgz
++ find mucs -maxdepth 4
++ head -40
+mucs
+mucs/test
+mucs/test/TkzR0GrQyK0vSTuj.wav
+mucs/test/K5BlLYB9ynemLTVa.wav
+mucs/test/w5Jyq3XMbb3WwiKQ.wav
+mucs/test/n3lwFhZkSdbJkOa0.wav
+mucs/test/UO5ZLDtkc8QMi9Hk.wav
+mucs/test/K8YJLqIcMPJ5GftE.wav
+mucs/test/fpL6MBSZsci9dyAn.wav
+mucs/test/kvxzesc5pGxL6dnk.wav
+mucs/test/ZQC2TFqLsvNDq9bP.wav
+mucs/test/Psh5UDSFbhWLZ3gk.wav
+mucs/test/x8iijxWeCf26KNpC.wav
+mucs/test/LPGZ2Jo8uBX4sx76.wav
+mucs/test/RRrEfkw4Rh5TdJkS.wav
+mucs/test/4oLp3bc9OSJbDrwM.wav
+mucs/test/nJfFvNUB8tQkaGgp.wav
+mucs/test/dNHXkqqVPqWYhzis.wav
+mucs/test/NhV290ew2hDJfVqc.wav
+mucs/test/transcripts
+mucs/test/transcripts/utt2spk
+mucs/test/transcripts/segments
+mucs/test/transcripts/spk2utt
+mucs/test/transcripts/spkr_list
+mucs/test/transcripts/wav.scp
+mucs/test/transcripts/text
+mucs/test/HgEJsLGKNWSFl8T7.wav
+mucs/test/406yMKxIdSDHRf8H.wav
+mucs/test/lHGLSlYIb1clRBRF.wav
+mucs/test/nImMxiSAAmCMR3yi.wav
+mucs/test/swLUjPHatcTk0wf8.wav
+mucs/test/kGQKLyQ1HtnUNL1d.wav
+mucs/test/5baFeyjOxK8JQnNG.wav
+mucs/test/aVTioioyNUVPGF4t.wav
+mucs/test/Bmcrju1ByfdrXE9P.wav
+mucs/test/4xyIm2P6Xzlin341.wav
+mucs/test/VU6OA7HUqTpQNtm2.wav
+mucs/test/FV8hkymGWcy53lrf.wav
+mucs/test/jFTbEEy3BCO5axj5.wav
++ cd ..
++ python3 evals/speech/to_kaldi.py fleurs dl/fleurs_hi_in k/fleurs_hi
+k/fleurs_hi: 418 utterances, 418 recordings, 0 segments
++ python3 evals/speech/to_kaldi.py fleurs dl/fleurs_en_us k/fleurs_en
+k/fleurs_en: 647 utterances, 647 recordings, 0 segments
++ python3 evals/speech/to_kaldi.py mucs dl/mucs k/mucs
+MUCS text files: ['dl/mucs/test/transcripts/text']
+MUCS: 30 recordings referenced, 0 without audio; sample text: [('103085_w5Jyq3XMbb3WwiKQ_0000', 'लिबर ऑफिस impress में एक प्रस्तुति document बनाना और बुनियादी formatting के इस spoken tutorial में आपका स्वागत है'), ('103085_w5Jyq3XMbb3WwiKQ_0001', 'इस tutorial में हम impress window के भागों के बारे में सीखेंगे और कैसे स्लाइड इन्सर्ट करें और कॉपी करें फॉन्ट तथा फॉन्ट को फॉर्मेट करना सीखेंगे')]
+k/mucs: 3136 utterances, 30 recordings, 3136 segments
++ SOURCES=fleurs_hi,mucs,fleurs_en
++ LOCAL='--local fleurs_hi=k/fleurs_hi --local fleurs_en=k/fleurs_en --local mucs=k/mucs'
++ for g in indicvoices lahaja svarah
++ '[' -d dl/indicvoices ']'
++ python3 evals/speech/to_kaldi.py parquet dl/indicvoices k/indicvoices
+no .parquet files under dl/indicvoices
++ echo 'indicvoices: not available, skipped'
+indicvoices: not available, skipped
++ for g in indicvoices lahaja svarah
++ '[' -d dl/lahaja ']'
++ python3 evals/speech/to_kaldi.py parquet dl/lahaja k/lahaja
+no .parquet files under dl/lahaja
++ echo 'lahaja: not available, skipped'
+lahaja: not available, skipped
++ for g in indicvoices lahaja svarah
++ '[' -d dl/svarah ']'
++ python3 evals/speech/to_kaldi.py parquet dl/svarah k/svarah
+no .parquet files under dl/svarah
++ echo 'svarah: not available, skipped'
+svarah: not available, skipped
++ python3 evals/speech/prepare_public_set.py --out /home/runner/work/kloo-app/kloo-app/golden --audio-out /home/runner/work/kloo-app/kloo-app/golden-audio --sources fleurs_hi,mucs,fleurs_en --local fleurs_hi=k/fleurs_hi --local fleurs_en=k/fleurs_en --local mucs=k/mucs
+fleurs_hi: 417 base clips, 0 pseudo-reels
+mucs: 300 base clips, 0 pseudo-reels
+fleurs_en: 300 base clips, 0 pseudo-reels
+wrote 1543 clips to /home/runner/work/kloo-app/kloo-app/golden (audio in /home/runner/work/kloo-app/kloo-app/golden-audio)
++ wc -l /home/runner/work/kloo-app/kloo-app/golden/manifest.jsonl
+1543 /home/runner/work/kloo-app/kloo-app/golden/manifest.jsonl
++ head -3 /home/runner/work/kloo-app/kloo-app/golden/manifest.jsonl
+{"lang": "hi", "variety": "hindi", "source": "fleurs_hi", "source_id": "7251883826251297781", "licence": "CC-BY-4.0", "injection": false, "synthetic": false, "conditions": ["clean"], "id": "flhi-hi-276bae5032", "duration_s": 9.36, "sha256": "aa62a056337f9128f3e08fc1a342dd87ba195aa314abe4a6e7792ecbf2cba68d", "set_version": "speech-public-v1"}
+{"lang": "hi", "variety": "hindi", "source": "fleurs_hi", "source_id": "18194643634199893480", "licence": "CC-BY-4.0", "injection": false, "synthetic": false, "conditions": ["clean"], "id": "flhi-hi-5d5d689e08", "duration_s": 8.64, "sha256": "1cc7d21b4f43b1545d97e1edc799b9d51df1dc64c4c9bf58720cf079e2f07775", "set_version": "speech-public-v1"}
+{"lang": "hi", "variety": "hindi", "source": "fleurs_hi", "source_id": "14585676639063535081", "licence": "CC-BY-4.0", "injection": false, "synthetic": false, "conditions": ["clean"], "id": "flhi-hi-640bc35fdb", "duration_s": 6.66, "sha256": "00841bad712931f9b014f7c16b35c7d823382d9ae10698a4d2189089e1a67c05", "set_version": "speech-public-v1"}
+++ grep -o '"id": "mucs[^"]*"' /home/runner/work/kloo-app/kloo-app/golden/manifest.jsonl
+++ head -3
+++ cut '-d"' -f4
+grep: write error: Broken pipe
++ for id in $(grep -o '"id": "mucs[^"]*"' "$GOLDEN/manifest.jsonl" | head -3 | cut -d'"' -f4)
++ cat /home/runner/work/kloo-app/kloo-app/golden/refs/mucs-hi-8268bf1c7c.txt
+यहाँ हम अपने ऑपरेटिंग सिस्टम के रूप में gnu/linux और लिबरऑफिस वर्जन 334 का उपयोग कर रहे हैं
++ for id in $(grep -o '"id": "mucs[^"]*"' "$GOLDEN/manifest.jsonl" | head -3 | cut -d'"' -f4)
++ cat /home/runner/work/kloo-app/kloo-app/golden/refs/mucs-hi-abfc126f15.txt
+जैसे कि आप देख सकते हैं workspace में 5 tabs हैं जिन्हें view buttons कहते हैं
++ for id in $(grep -o '"id": "mucs[^"]*"' "$GOLDEN/manifest.jsonl" | head -3 | cut -d'"' -f4)
++ cat /home/runner/work/kloo-app/kloo-app/golden/refs/mucs-hi-abfc126f15__fast.txt
+जैसे कि आप देख सकते हैं workspace में 5 tabs हैं जिन्हें view buttons कहते हैं
