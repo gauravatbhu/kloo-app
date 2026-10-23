@@ -3,6 +3,15 @@ models/**/*.bin
 models/**/*.gguf
 models/**/*.tflite
 models/**/*.litertlm
+# Golden-set media lives in private storage, never in git (evals/golden/speech/README.md)
+evals/golden/**/audio/
+evals/golden/**/*.wav
+evals/golden/**/*.flac
+evals/golden/**/*.m4a
+evals/golden/**/*.mp3
+evals/golden/**/*.mp4
+evals/golden/**/consent/
+__pycache__/
 .DS_Store
 *.keystore
 .env*

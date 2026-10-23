@@ -1,0 +1,169 @@
+name: speech-round1
+
+# Round 1 of the speech benchmark on the open (ungated) public sources:
+# FLEURS Hindi + English and MUCS 2021 Hindi-English. Desktop CPU accuracy only.
+# Each job pushes its results and log to the ci/speech-results branch so they
+# can be read without the Actions UI; the report is compiled from there. Gated sources (IndicVoices, Lahaja, Svarah,
+# Kathbath) join once the HF_TOKEN secret exists.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ml/hindi-speech-baseline]
+    paths:
+      - ".github/workflows/speech-round1.yml"
+      - "evals/speech/round1/TRIGGER"
+      - "evals/speech/round1/ONLY"
+
+concurrency:
+  group: speech-round1
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+env:
+  GOLDEN: ${{ github.workspace }}/golden
+  AUDIO: ${{ github.workspace }}/golden-audio
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build golden set from open sources
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p logs
+          {
+            set -ex
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+            pip install -q numpy==2.1.3
+            python3 -m unittest discover -s evals/speech -v
+            mkdir -p dl && cd dl
+            for lang in hi_in en_us; do
+              mkdir -p fleurs_$lang
+              curl -fsSL -o fleurs_$lang/test.tsv https://huggingface.co/datasets/google/fleurs/resolve/main/data/$lang/test.tsv
+              curl -fsSL https://huggingface.co/datasets/google/fleurs/resolve/main/data/$lang/audio/test.tar.gz | tar -xz -C fleurs_$lang
+              head -c 600 fleurs_$lang/test.tsv; echo
+            done
+            mkdir -p mucs
+            curl -fsSL https://openslr.trmal.net/resources/104/Hindi-English_test.tar.gz -o mucs.tgz \
+              || curl -fsSL https://openslr.elda.org/resources/104/Hindi-English_test.tar.gz -o mucs.tgz
+            tar -xzf mucs.tgz -C mucs && rm mucs.tgz
+            find mucs -maxdepth 4 | head -40
+            cd ..
+            python3 evals/speech/to_kaldi.py fleurs dl/fleurs_hi_in k/fleurs_hi
+            python3 evals/speech/to_kaldi.py fleurs dl/fleurs_en_us k/fleurs_en
+            python3 evals/speech/to_kaldi.py mucs dl/mucs k/mucs
+            python3 evals/speech/prepare_public_set.py --out "$GOLDEN" --audio-out "$AUDIO" \
+              --sources fleurs_hi,mucs,fleurs_en \
+              --local fleurs_hi=k/fleurs_hi --local fleurs_en=k/fleurs_en --local mucs=k/mucs
+            wc -l "$GOLDEN/manifest.jsonl"
+            head -3 "$GOLDEN/manifest.jsonl"
+            for id in $(grep -o '"id": "mucs[^"]*"' "$GOLDEN/manifest.jsonl" | head -3 | cut -d'"' -f4); do cat "$GOLDEN/refs/$id.txt"; done
+          } 2>&1 | tee logs/build.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: golden
+          path: |
+            golden
+            golden-audio
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: log-build
+          path: logs/
+
+  transcribe:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {model: "openai/whisper-small", slug: "whisper-small", langs: "hi,en", limit: "0"}
+          - {model: "vasista22/whisper-hindi-small", slug: "whisper-hindi-small-vasista22", langs: "hi", limit: "0"}
+          - {model: "Oriserve/Whisper-Hindi2Hinglish-Prime", slug: "hindi2hinglish-prime", langs: "hi", limit: "250"}
+          - {model: "openai/whisper-large-v3-turbo", slug: "whisper-large-v3-turbo-ceiling", langs: "hi,en", limit: "250"}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Skip models not listed in evals/speech/round1/ONLY (if present)
+        id: pick
+        shell: bash
+        run: |
+          if [ -s evals/speech/round1/ONLY ] && ! grep -qx "${{ matrix.slug }}" evals/speech/round1/ONLY; then
+            echo "run=false" >> "$GITHUB_OUTPUT"; else echo "run=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/download-artifact@v4
+        if: steps.pick.outputs.run == 'true'
+        with:
+          name: golden
+          path: .
+      - name: Transcribe and score
+        if: steps.pick.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p logs out/${{ matrix.slug }}
+          {
+            set -ex
+            pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+            pip install -q transformers==4.46.3 numpy==2.1.3
+            python3 evals/speech/transcribe_hf.py --golden "$GOLDEN" --audio "$AUDIO" \
+              --hyps hyps --model "${{ matrix.model }}" --langs "${{ matrix.langs }}" --limit "${{ matrix.limit }}" --max-minutes 270
+            cp hyps/_timing.json out/${{ matrix.slug }}/timing.json
+            python3 evals/speech/run_speech_eval.py --golden "$GOLDEN" --hyps hyps \
+              --langs "${{ matrix.langs }}" --engine transformers --model "${{ matrix.model }}" \
+              --device "github-ubuntu-cpu" --out out/${{ matrix.slug }}/results.jsonl \
+              --summary out/${{ matrix.slug }}/summary.json --missing skip
+          } 2>&1 | tee logs/${{ matrix.slug }}.log
+      - name: Push results and log to ci/speech-results
+        if: always() && steps.pick.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -x
+          mkdir -p logs out/${{ matrix.slug }}
+          tail -n 150 logs/${{ matrix.slug }}.log > out/${{ matrix.slug }}/log.txt 2>/dev/null || echo "no log" > out/${{ matrix.slug }}/log.txt
+          echo "${{ job.status }} run=${{ github.run_id }} sha=${{ github.sha }}" > out/${{ matrix.slug }}/status.txt
+          find out -name results.jsonl -size +3M -delete
+          git config user.name kloo-ci; git config user.email kloo-ci@users.noreply.github.com
+          for i in 1 2 3 4 5 6; do
+            rm -rf res && git clone -q --depth 1 --branch ci/speech-results "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" res 2>/dev/null \
+              || { git init -q res && git -C res checkout -q -b ci/speech-results && git -C res remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"; }
+            mkdir -p res/round1 && rm -rf res/round1/${{ matrix.slug }} && cp -r out/${{ matrix.slug }} res/round1/
+            git -C res add -A && git -C res -c user.name=kloo-ci -c user.email=kloo-ci@users.noreply.github.com commit -q -m "round1 ${{ matrix.slug }} [skip ci]" || break
+            git -C res push -q origin ci/speech-results && break
+            sleep $((RANDOM % 20 + 5))
+          done
+
+  build-log:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: log-build
+          path: logs
+      - name: Push build log
+        shell: bash
+        run: |
+          for i in 1 2 3 4 5 6; do
+            rm -rf res && git clone -q --depth 1 --branch ci/speech-results "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" res 2>/dev/null \
+              || { git init -q res && git -C res checkout -q -b ci/speech-results && git -C res remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"; }
+            mkdir -p res/round1 && tail -n 250 logs/build.log > res/round1/build-log.txt 2>/dev/null || echo "no build log; build=${{ needs.build.result }}" > res/round1/build-log.txt
+            git -C res add -A && git -C res -c user.name=kloo-ci -c user.email=kloo-ci@users.noreply.github.com commit -q -m "round1 build log [skip ci]" || break
+            git -C res push -q origin ci/speech-results && break
+            sleep $((RANDOM % 20 + 5))
+          done

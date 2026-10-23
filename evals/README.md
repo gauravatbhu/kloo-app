@@ -27,5 +27,9 @@ Owner: `qa-eval`. Thresholds: `thresholds.json`. Reports: `reports/`.
 python3 evals/privacy/check_egress.py evals/privacy/sample_capture.jsonl --json > /tmp/privacy.json
 python3 evals/run_evals.py --results evals/golden/sample_results.jsonl
 ```
+Speech results come from `evals/speech/run_speech_eval.py`, which scores any
+engine's transcripts against `evals/golden/speech/` (spec, Hinglish rules and
+consent form in its README). Tests: `python3 -m unittest discover -s evals/speech`.
+
 `sample_results.jsonl` is synthetic demo data that shows the format; replace it
 with real harness output from the apps.
