@@ -3,25 +3,84 @@
 
 [notice] A new release of pip is available: 26.2.1 -> 26.2.2
 [notice] To update, run: pip install --upgrade pip
-+ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model Oriserve/Whisper-Hindi2Hinglish-Prime --langs hi --limit 250
-Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:36<00:36, 36.88s/it]Downloading shards: 100%|██████████| 2/2 [00:43<00:00, 18.93s/it]Downloading shards: 100%|██████████| 2/2 [00:43<00:00, 21.62s/it]
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  3.89it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  5.83it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  5.42it/s]
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model Oriserve/Whisper-Hindi2Hinglish-Prime --langs hi --limit 250 --max-minutes 270
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:33<00:33, 33.71s/it]Downloading shards: 100%|██████████| 2/2 [00:41<00:00, 18.41s/it]Downloading shards: 100%|██████████| 2/2 [00:41<00:00, 20.71s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  5.07it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  7.35it/s]
 You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
 The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
-From v4.47 onwards, when a model cache is to be returned, `generate` will return a `Cache` instance instead by default (as opposed to the legacy tuple of tuples format). If you want to keep returning the legacy format, please set `return_legacy_cache=True`.
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 8/500 RTF 14.140
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 16/500 RTF 12.158
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 24/500 RTF 12.903
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 32/500 RTF 12.742
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 40/500 RTF 12.422
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 48/500 RTF 12.143
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 56/500 RTF 12.304
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 64/500 RTF 12.139
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 72/500 RTF 12.156
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 80/500 RTF 12.101
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 88/500 RTF 12.241
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 96/500 RTF 11.880
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 104/500 RTF 11.885
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 112/500 RTF 12.006
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 120/500 RTF 12.184
-Oriserve/Whisper-Hindi2Hinglish-Prime hi: 128/500 RTF 12.229
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 8/500 RTF 1.206
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 16/500 RTF 1.211
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 24/500 RTF 1.314
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 32/500 RTF 1.234
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 40/500 RTF 1.232
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 48/500 RTF 1.169
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 56/500 RTF 1.116
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 64/500 RTF 1.114
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 72/500 RTF 1.105
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 80/500 RTF 1.095
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 88/500 RTF 1.083
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 96/500 RTF 1.091
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 104/500 RTF 1.096
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 112/500 RTF 1.073
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 120/500 RTF 1.068
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 128/500 RTF 1.073
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 136/500 RTF 1.082
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 144/500 RTF 1.099
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 152/500 RTF 1.111
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 160/500 RTF 1.112
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 168/500 RTF 1.122
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 176/500 RTF 1.115
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 184/500 RTF 1.109
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 192/500 RTF 1.097
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 200/500 RTF 1.094
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 208/500 RTF 1.087
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 216/500 RTF 1.084
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 224/500 RTF 1.088
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 232/500 RTF 1.081
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 240/500 RTF 1.083
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 248/500 RTF 1.081
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 256/500 RTF 1.084
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 264/500 RTF 1.083
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 272/500 RTF 1.096
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 280/500 RTF 1.107
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 288/500 RTF 1.119
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 296/500 RTF 1.126
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 304/500 RTF 1.129
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 312/500 RTF 1.138
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 320/500 RTF 1.147
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 328/500 RTF 1.156
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 336/500 RTF 1.164
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 344/500 RTF 1.172
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 352/500 RTF 1.178
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 360/500 RTF 1.189
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 368/500 RTF 1.197
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 376/500 RTF 1.208
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 384/500 RTF 1.208
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 392/500 RTF 1.218
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 400/500 RTF 1.227
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 408/500 RTF 1.232
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 416/500 RTF 1.239
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 424/500 RTF 1.244
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 432/500 RTF 1.251
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 440/500 RTF 1.259
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 448/500 RTF 1.264
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 456/500 RTF 1.266
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 464/500 RTF 1.275
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 472/500 RTF 1.276
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 480/500 RTF 1.282
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 488/500 RTF 1.287
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 496/500 RTF 1.291
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 500/500 RTF 1.291
++ cp hyps/_timing.json out/hindi2hinglish-prime/timing.json
++ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi --engine transformers --model Oriserve/Whisper-Hindi2Hinglish-Prime --device github-ubuntu-cpu --out out/hindi2hinglish-prime/results.jsonl --summary out/hindi2hinglish-prime/summary.json --missing skip
+Speech eval: engine=transformers model=Oriserve/Whisper-Hindi2Hinglish-Prime device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
+group                                        clips  words     WER  WERstr  CERstr urdu miss
+lang=hi                                        500   9159   26.8%   98.8%   92.0%    0    0
+lang=hi/condition=clean                        332   6035   27.1%   98.9%   92.1%    0    0
+lang=hi/condition=fast                         168   3124   26.2%   98.7%   91.8%    0    0
+lang=hi/condition=reencode                     168   3124   26.2%   98.7%   91.8%    0    0
+lang=hi/source=fleurs_hi                       250   5918   19.7%  103.4%  100.6%    0    0
+lang=hi/source=mucs                            250   3241   39.6%   90.3%   76.5%    0    0
+variety=hindi                                  250   5918   19.7%  103.4%  100.6%    0    0
+variety=hinglish                               250   3241   39.6%   90.3%   76.5%    0    0
+WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. urdu = clips whose output is >20% Arabic script.
