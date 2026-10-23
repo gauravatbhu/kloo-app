@@ -1,0 +1,98 @@
++ pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
++ pip install -q transformers==4.46.3 numpy==2.1.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
++ '[' hf = conformer ']'
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model vasista22/whisper-hindi-small --langs hi --limit 300 --max-minutes 270
+generation config outdated; using openai/whisper-small's
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50359]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+vasista22/whisper-hindi-small hi: 8/600 RTF 0.513
+vasista22/whisper-hindi-small hi: 16/600 RTF 0.494
+vasista22/whisper-hindi-small hi: 24/600 RTF 0.537
+vasista22/whisper-hindi-small hi: 32/600 RTF 0.508
+vasista22/whisper-hindi-small hi: 40/600 RTF 0.507
+vasista22/whisper-hindi-small hi: 48/600 RTF 0.486
+vasista22/whisper-hindi-small hi: 56/600 RTF 0.467
+vasista22/whisper-hindi-small hi: 64/600 RTF 0.465
+vasista22/whisper-hindi-small hi: 72/600 RTF 0.463
+vasista22/whisper-hindi-small hi: 80/600 RTF 0.458
+vasista22/whisper-hindi-small hi: 88/600 RTF 0.605
+vasista22/whisper-hindi-small hi: 96/600 RTF 0.599
+vasista22/whisper-hindi-small hi: 104/600 RTF 0.590
+vasista22/whisper-hindi-small hi: 112/600 RTF 0.637
+vasista22/whisper-hindi-small hi: 120/600 RTF 0.684
+vasista22/whisper-hindi-small hi: 128/600 RTF 0.671
+vasista22/whisper-hindi-small hi: 136/600 RTF 0.662
+vasista22/whisper-hindi-small hi: 144/600 RTF 0.660
+vasista22/whisper-hindi-small hi: 152/600 RTF 0.653
+vasista22/whisper-hindi-small hi: 160/600 RTF 0.642
+vasista22/whisper-hindi-small hi: 168/600 RTF 0.702
+vasista22/whisper-hindi-small hi: 176/600 RTF 0.686
+vasista22/whisper-hindi-small hi: 184/600 RTF 0.673
+vasista22/whisper-hindi-small hi: 192/600 RTF 0.658
+vasista22/whisper-hindi-small hi: 200/600 RTF 0.648
+vasista22/whisper-hindi-small hi: 208/600 RTF 0.635
+vasista22/whisper-hindi-small hi: 216/600 RTF 0.627
+vasista22/whisper-hindi-small hi: 224/600 RTF 0.623
+vasista22/whisper-hindi-small hi: 232/600 RTF 0.613
+vasista22/whisper-hindi-small hi: 240/600 RTF 0.609
+vasista22/whisper-hindi-small hi: 248/600 RTF 0.603
+vasista22/whisper-hindi-small hi: 256/600 RTF 0.638
+vasista22/whisper-hindi-small hi: 264/600 RTF 0.631
+vasista22/whisper-hindi-small hi: 272/600 RTF 0.677
+vasista22/whisper-hindi-small hi: 280/600 RTF 0.668
+vasista22/whisper-hindi-small hi: 288/600 RTF 0.665
+vasista22/whisper-hindi-small hi: 296/600 RTF 0.660
+vasista22/whisper-hindi-small hi: 304/600 RTF 0.665
+vasista22/whisper-hindi-small hi: 312/600 RTF 0.663
+vasista22/whisper-hindi-small hi: 320/600 RTF 0.665
+vasista22/whisper-hindi-small hi: 328/600 RTF 0.667
+vasista22/whisper-hindi-small hi: 336/600 RTF 0.671
+vasista22/whisper-hindi-small hi: 344/600 RTF 0.670
+vasista22/whisper-hindi-small hi: 352/600 RTF 0.668
+vasista22/whisper-hindi-small hi: 360/600 RTF 0.668
+vasista22/whisper-hindi-small hi: 368/600 RTF 0.670
+vasista22/whisper-hindi-small hi: 376/600 RTF 0.672
+vasista22/whisper-hindi-small hi: 384/600 RTF 0.674
+vasista22/whisper-hindi-small hi: 392/600 RTF 0.674
+vasista22/whisper-hindi-small hi: 400/600 RTF 0.673
+vasista22/whisper-hindi-small hi: 408/600 RTF 0.674
+vasista22/whisper-hindi-small hi: 416/600 RTF 0.684
+vasista22/whisper-hindi-small hi: 424/600 RTF 0.686
+vasista22/whisper-hindi-small hi: 432/600 RTF 0.682
+vasista22/whisper-hindi-small hi: 440/600 RTF 0.683
+vasista22/whisper-hindi-small hi: 448/600 RTF 0.685
+vasista22/whisper-hindi-small hi: 456/600 RTF 0.687
+vasista22/whisper-hindi-small hi: 464/600 RTF 0.688
+vasista22/whisper-hindi-small hi: 472/600 RTF 0.689
+vasista22/whisper-hindi-small hi: 480/600 RTF 0.690
+vasista22/whisper-hindi-small hi: 488/600 RTF 0.695
+vasista22/whisper-hindi-small hi: 496/600 RTF 0.697
+vasista22/whisper-hindi-small hi: 504/600 RTF 0.706
+vasista22/whisper-hindi-small hi: 512/600 RTF 0.709
+vasista22/whisper-hindi-small hi: 520/600 RTF 0.707
+vasista22/whisper-hindi-small hi: 528/600 RTF 0.706
+vasista22/whisper-hindi-small hi: 536/600 RTF 0.707
+vasista22/whisper-hindi-small hi: 544/600 RTF 0.715
+vasista22/whisper-hindi-small hi: 552/600 RTF 0.714
+vasista22/whisper-hindi-small hi: 560/600 RTF 0.716
+vasista22/whisper-hindi-small hi: 568/600 RTF 0.715
+vasista22/whisper-hindi-small hi: 576/600 RTF 0.714
+vasista22/whisper-hindi-small hi: 584/600 RTF 0.714
+vasista22/whisper-hindi-small hi: 592/600 RTF 0.711
+vasista22/whisper-hindi-small hi: 600/600 RTF 0.713
++ cp hyps/_timing.json out/whisper-hindi-small-vasista22/timing.json
++ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi --engine transformers --model vasista22/whisper-hindi-small --device github-ubuntu-cpu --out out/whisper-hindi-small-vasista22/results.jsonl --summary out/whisper-hindi-small-vasista22/summary.json --missing skip
+Speech eval: engine=transformers model=vasista22/whisper-hindi-small device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
+group                                        clips  words     WER  WERstr   WERph  CERstr urdu miss
+lang=hi                                        600  11067   35.1%   37.5%   31.3%   29.9%    0    0
+lang=hi/condition=clean                        397   7246   36.7%   39.2%   32.8%   30.9%    0    0
+lang=hi/condition=fast                         203   3821   32.2%   34.3%   28.3%   27.9%    0    0
+lang=hi/condition=reencode                     203   3821   32.2%   34.3%   28.3%   27.9%    0    0
+lang=hi/source=fleurs_hi                       300   7258   11.9%   13.7%   10.0%    6.4%    0    0
+lang=hi/source=mucs                            300   3809   79.4%   82.9%   71.8%   73.8%    0    0
+variety=hindi                                  300   7258   11.9%   13.7%   10.0%    6.4%    0    0
+variety=hinglish                               300   3809   79.4%   82.9%   71.8%   73.8%    0    0
+WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. WERph = diagnostic consonant key (hi only, lenient). urdu = clips whose output is >20% Arabic script.
