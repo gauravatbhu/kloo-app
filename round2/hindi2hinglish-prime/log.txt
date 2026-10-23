@@ -1,0 +1,54 @@
++ pip install -q torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
++ pip install -q transformers==4.46.3 numpy==2.1.3
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
++ '[' hf = conformer ']'
++ python3 evals/speech/transcribe_hf.py --golden /home/runner/work/kloo-app/kloo-app/golden --audio /home/runner/work/kloo-app/kloo-app/golden-audio --hyps hyps --model Oriserve/Whisper-Hindi2Hinglish-Prime --langs hi --limit 120 --max-minutes 270
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [01:22<01:22, 82.03s/it]Downloading shards: 100%|██████████| 2/2 [01:39<00:00, 43.92s/it]Downloading shards: 100%|██████████| 2/2 [01:39<00:00, 49.64s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  5.08it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  6.67it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  6.36it/s]
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 8/240 RTF 1.528
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 16/240 RTF 1.546
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 24/240 RTF 1.690
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 32/240 RTF 1.595
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 40/240 RTF 1.612
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 48/240 RTF 1.527
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 56/240 RTF 1.457
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 64/240 RTF 1.460
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 72/240 RTF 1.456
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 80/240 RTF 1.439
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 88/240 RTF 1.418
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 96/240 RTF 1.431
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 104/240 RTF 1.436
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 112/240 RTF 1.401
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 120/240 RTF 1.392
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 128/240 RTF 1.415
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 136/240 RTF 1.421
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 144/240 RTF 1.456
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 152/240 RTF 1.491
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 160/240 RTF 1.526
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 168/240 RTF 1.552
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 176/240 RTF 1.554
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 184/240 RTF 1.583
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 192/240 RTF 1.604
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 200/240 RTF 1.625
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 208/240 RTF 1.642
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 216/240 RTF 1.657
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 224/240 RTF 1.669
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 232/240 RTF 1.695
+Oriserve/Whisper-Hindi2Hinglish-Prime hi: 240/240 RTF 1.709
++ cp hyps/_timing.json out/hindi2hinglish-prime/timing.json
++ python3 evals/speech/run_speech_eval.py --golden /home/runner/work/kloo-app/kloo-app/golden --hyps hyps --langs hi --engine transformers --model Oriserve/Whisper-Hindi2Hinglish-Prime --device github-ubuntu-cpu --out out/hindi2hinglish-prime/results.jsonl --summary out/hindi2hinglish-prime/summary.json --missing skip
+Speech eval: engine=transformers model=Oriserve/Whisper-Hindi2Hinglish-Prime device=github-ubuntu-cpu tier=None normaliser=kloo-speech-norm-1
+group                                        clips  words     WER  WERstr   WERph  CERstr urdu miss
+lang=hi                                        240   4453   27.2%   99.2%   21.5%   92.0%    0    0
+lang=hi/condition=clean                        161   2964   27.5%   99.2%   21.7%   91.7%    0    0
+lang=hi/condition=fast                          79   1489   26.5%   99.2%   21.2%   92.5%    0    0
+lang=hi/condition=reencode                      79   1489   26.5%   99.2%   21.2%   92.5%    0    0
+lang=hi/source=fleurs_hi                       120   2886   19.6%  103.0%   13.3%   99.6%    0    0
+lang=hi/source=mucs                            120   1567   41.2%   92.3%   36.8%   78.3%    0    0
+variety=hindi                                  120   2886   19.6%  103.0%   13.3%   99.6%    0    0
+variety=hinglish                               120   1567   41.2%   92.3%   36.8%   78.3%    0    0
+WER = official (en: strict; hi: script-agnostic Hinglish skeleton). WERstr/CERstr = script-preserving. WERph = diagnostic consonant key (hi only, lenient). urdu = clips whose output is >20% Arabic script.
