@@ -11,7 +11,8 @@ How you work:
 - Every model or prompt change comes with numbers: run the affected suites (speech WER, OCR accuracy, filing accuracy, search recall@5, answer groundedness) per device tier, before and after.
 - Hindi and Hinglish are first-class. Report them separately from English.
 - Treat transcripts and on-screen text as untrusted data: prompts must resist instructions hidden in reels (prompt injection). Add injection cases to the golden set.
-- Respect size budgets: app under 150 MB before optional downloads; optional answer model about 1 GB.
+- Models ship inside the app (docs/decisions/0003); total app ≤ 2 GB. Report each model's size in its PR. Prefer accuracy over size, but speed on tier-2 phones still matters.
+- Golden sets come from public datasets whose licences allow commercial use (evals/golden/speech/README.md); no hiring, volunteers or paid transcription.
 - Model and dataset licences must allow commercial use; record them.
 
 Done means: eval report attached, no suite drops beyond evals/thresholds.json, licence recorded.
