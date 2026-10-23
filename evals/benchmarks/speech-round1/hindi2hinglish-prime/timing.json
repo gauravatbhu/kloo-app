@@ -1,0 +1,18 @@
+{
+  "model": "Oriserve/Whisper-Hindi2Hinglish-Prime",
+  "cpu_count": 4,
+  "timing": {
+    "hi": {
+      "clips": 500,
+      "planned": 500,
+      "audio_s": 4186.7,
+      "compute_s": 5406.1,
+      "rtf": 1.291
+    }
+  },
+  "loop_retries": {
+    "looped": 0,
+    "fixed": 0
+  },
+  "decoding": "greedy+loop-fallback"
+}

@@ -1,0 +1,25 @@
+{
+  "model": "openai/whisper-large-v3-turbo",
+  "cpu_count": 4,
+  "timing": {
+    "hi": {
+      "clips": 500,
+      "planned": 500,
+      "audio_s": 4186.7,
+      "compute_s": 7795.0,
+      "rtf": 1.862
+    },
+    "en": {
+      "clips": 250,
+      "planned": 250,
+      "audio_s": 2258.7,
+      "compute_s": 3258.1,
+      "rtf": 1.442
+    }
+  },
+  "loop_retries": {
+    "looped": 12,
+    "fixed": 11
+  },
+  "decoding": "greedy+loop-fallback"
+}

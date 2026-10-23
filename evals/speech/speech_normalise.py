@@ -31,6 +31,7 @@ import re
 import unicodedata
 
 NORMALISER_VERSION = "kloo-speech-norm-1"
+PHONETIC_VERSION = "kloo-speech-phon-1"
 
 _ZERO_WIDTH = dict.fromkeys(map(ord, "​‌‍⁠﻿­"), None)
 _DEVANAGARI_DIGITS = {ord(c): str(i) for i, c in enumerate("०१२३४५६७८९")}
@@ -251,3 +252,34 @@ def script_profile(text):
             counts["other"] += 1
     total = sum(counts.values())
     return {k: (v / total if total else 0.0) for k, v in counts.items()}
+
+
+# ---------------------------------------------------------------- phonetic key
+# Diagnostic only (WERph), never the official score. Hinglish engines write the
+# same English loanword in either script ("file" / "फाइल" -> "fel"), and
+# Devanagari romanisation cannot recover English spelling. A consonant key makes
+# such pairs match: file -> fl, फाइल -> fl, box -> bks, बॉक्स -> bks.
+# It is lenient by design (it ignores vowels), so it shows how much of a gap is
+# script and spelling rather than wrong words. Always report it next to WER.
+_PH_RULES = (
+    ("ck", "k"), ("ce", "s"), ("ci", "s"), ("cy", "s"), ("ch", "\x01"), ("c", "k"),
+    ("\x01", "ch"), ("x", "ks"), ("q", "k"), ("ph", "f"), ("w", "v"), ("z", "j"),
+)
+
+
+def phonetic_key(token):
+    t = token.lower()
+    if not t.isascii() or not t.isalpha():
+        return t
+    for a, b in _PH_RULES:
+        t = t.replace(a, b)
+    head, rest = t[0], t[1:]
+    rest = re.sub(r"[aeiouy]", "", rest)
+    rest = re.sub(r"(?<=[^aeiou])h", "", rest) if len(rest) > 1 else rest
+    key = re.sub(r"(.)\1+", r"\1", head + rest)
+    return key
+
+
+def phonetic_normalise(skeleton_text):
+    """Map an already-normalised (Hinglish skeleton) string to phonetic keys."""
+    return " ".join(phonetic_key(w) for w in skeleton_text.split())
