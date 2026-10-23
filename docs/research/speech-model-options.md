@@ -112,6 +112,13 @@ Script choice is handled at scoring time (transliteration + Hinglish skeleton)
 and should be handled at search time (index a romanised form next to the
 transcript) rather than by forcing one engine to output one script.
 
+## Round 1 results (2026-10-23)
+Measured on public data, desktop CPU: see `evals/reports/speech-round1/README.md`.
+On the same 445 Hindi/Hinglish clips: stock Whisper small 57.9% WER, Hindi
+fine-tune (vasista22) 30.9%, Hinglish model (Oriserve Prime) 25.4%,
+large-v3-turbo 31.0%. English: Whisper small 9.4%. Phone speed not yet
+measured.
+
 ## Recommendation: what to benchmark first
 
 Because size no longer matters, the likely shipping setup is **both**: stock
