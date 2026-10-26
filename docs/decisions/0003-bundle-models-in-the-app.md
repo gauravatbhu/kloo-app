@@ -1,6 +1,6 @@
 # 0003 — Ship on-device models inside the app; no model download server
 
-- Status: proposed (needs Gaurav's merge)
+- Status: accepted (merged 2026-10-23, PR #4)
 - Date: 2026-10-22
 - Deciders: Gaurav, Claude
 
